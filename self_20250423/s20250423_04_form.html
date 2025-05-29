@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body bgcolor="#fce5cd">
+    <h3>電子裝置調查</h3>
+    <hr>
+    <form action="">
+        <!-- input: text -->
+        <h3>個人資料</h3>
+        <p>
+            <!-- for ID -->
+            <!-- ID 身分證唯一值選擇 -->
+            <!-- name 後端接受的colume key -->
+            <!-- Value 後端接收的 colume value -->
+            <!-- 未來 id name 資料庫(BD) 可以都取一樣的比較方便  -->
+            <label for="">姓名</label>
+            <input type="text" name="name" id="name">
+        </p>
+        <h3>性別</h3>
+        <p>
+            <!-- NAME 設定一樣最方便 -->
+            <input type="radio" name="gender" id="male" value="male">
+            <label for="male">男性</label>
+            <input type="radio" name="gender" id="female">
+            <label for="female">女性</label>
+            <input type="radio" name="gender" id="other">
+            <label for="other">其他</label>
+        </p>
+
+        <h3>出生年份</h3>
+        <select name="birthday" id="birthday">
+            <option value="">請選擇年份</option>
+        </select>
+        <script>
+            const select = document.getElementById('birthday');
+            const startYear = 1950;
+            const endYear = 2025;
+
+            for (let year = startYear; year <= endYear; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.text = year;
+                select.appendChild(option);
+            }
+        </script>
+        <h3>持有裝置</h3>
+        <p>
+            <!-- Name the same name -->
+            <!-- Add [] -->
+            <!-- [] means Array 陣列 -->
+            <!-- love = [html, css, js]  -->
+            <input type="checkbox" name="prefer[]" id="smartphone" value="智慧型手機">
+            <label for="smartphone">智慧型手機</label>
+            <input type="checkbox" name="prefer[]" id="tablet" value="平板電腦">
+            <label for="tablet">平板電腦</label>
+            <input type="checkbox" name="prefer[]" id="smartwatch" value="智慧手錶">
+            <label for="smartwatch">智慧手錶</label>
+            <input type="checkbox" name="prefer[]" id="laptop" value="筆記型電腦">
+            <label for="laptop">筆記型電腦</label>
+        </p>
+
+        <br>
+        <hr><br>
+        <p>
+        <h3>手機品牌</h3>
+        <label for="phones"></label>
+
+        <select name="phones" id="phones">
+            <option value="apple">蘋果</option>
+            <option value="samsung">三星</option>
+            <option value="google">Google</option>
+            <option value="xiaomi">小米</option>
+            <option value="oppo">OPPO</option>
+            <option value="others">其他</option>
+        </select>
+        </p>
+        <h3>其他意見</h3>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+    </form>
+
+    <p>
+        <input type="submit" value="Submit">
+    </p>
+    <p>
+        <input type="reset" value="Reset">
+    </p>
+
+</body>
+
+</html>

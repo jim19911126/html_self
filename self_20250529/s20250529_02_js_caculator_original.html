@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <P>
+        <input type="number" name="" id="num1">
+    </P>
+    <P>
+        <input type="number" name="" id="num2">
+    </P>
+    <P>
+        <button type="button" id="myBtn">Press</button>
+    </P>
+
+    <script>
+        let num1 = document.getElementById('num1');
+        let num2 = document.getElementById('num2');
+        let myBtn = document.getElementById('myBtn');
+
+        myBtn.addEventListener('click', function () {
+            console.log('myBtn ok');
+            // 抓value
+            let num1Value = num1.value;
+            console.log('num1Value');
+            let num2Value = num2.value;
+            console.log('num2Value');
+        })
+    </script>
+</body>
+
+</html>

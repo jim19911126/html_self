@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- external 外部 CSS -->
+    <!-- link:css tab -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- internal 內部 CSS 寫在上面的 STYLE 裡面 -->
+    <style>
+        .bio {
+            color: green;
+        }
+        html,body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .block{
+            width: 600px;
+            margin: auto;
+            padding: 30px;
+            text-align: center;
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+    <div class="block">
+    <h1>自我介紹</h1>
+    <img src="./images/03.jpg" alt="" width="450">
+
+    <!-- inline CSS 行內 CSS (這個請少用) -->
+    <p style="color:blueviolet">大家好我是Jim</p>
+
+    <p class="bio">最近正在學程式語言</p>
+
+    <p id="edu">每天都起很早很累</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: aquamarine;
+            margin: auto;
+            text-align: center;
+            padding: 10px;
+        }
+
+        table,tr,td {
+            height: 500px;
+        }
+
+        table{
+            width: 80%;
+            border-collapse: collapse;
+            margin: auto;
+        }
+        /* vertical-align 高度 只能用在table */
+        .table2-td {
+            background-color: lightpink;
+            height: 500px;
+            vertical-align: middle;
+            text-align: center;
+            background-image: url('./images/03.jpg');
+        }
+
+        .box1 {
+            vertical-align: top;
+        }
+
+        .box2 {
+            vertical-align: middle;
+        }
+
+        .box3 {
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>table 1</h3>
+    <table>
+        <tr>
+            <td class="box1">
+                <div class="box ">
+                    <h3>本業</h3>
+                    <p>擁有多元行銷實戰經驗，熟悉品牌定位、廣告投放與內容策略規劃，擅長透過數據分析優化成效，提升曝光與轉換率。能獨立執行專案，從市場研究、腳本發想到廣告上線皆具實務操作經驗。擁有跨平台操作能力，曾負責社群經營、KOL合作與數位廣告，致力以創意與效率協助品牌打造影響力。                    </p>
+    
+                </div>
+            </td>
+            <td class="box2">
+                <div class="box ">
+                    <h3>投資</h3>
+                    <p>熱衷投資理財，具備多年股票與 ETF 操作經驗，熟悉基本面與技術面分析，擅長掌握總體經濟趨勢與產業循環。擁有穩健的風險控管觀念，投資風格以中長期佈局為主，曾多次成功掌握波段進出場時機。也持續關注 REITs、美元資產與新興市場，並重視資產配置與現金流管理，致力於打造穩健且具有彈性的財務結構。
+                    </p>
+                </div>
+            </td>
+            <td class="box3">
+                <div class="box ">
+                    <h3>房地產</h3>
+                    <p>對房地產市場具高度關注，曾參與多筆不動產買賣與租賃交易，熟悉購屋流程、稅務規劃與貸款申請。關注區域發展與未來潛力，擅長評估物件價值與報酬率，實際操作經驗涵蓋自住與投資用途。也重視房產與整體資產的配置關係，持續關注法規變動與市場走勢，以穩健策略提升資產增值空間。
+                    </p>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+    <h3>table2</h3>
+    <table id="table2">
+        <tr>
+            <td class="table2-td box">
+                <h3>本業</h3>
+            </td>
+            <td class="table2-td box">
+                投資
+            </td>
+            <td class="table2-td box">
+                房地產
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

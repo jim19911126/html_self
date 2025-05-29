@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .green > div {
+            color: green;
+        }
+
+        /* ~ 兄弟姊妹 */
+        .green + div {
+            color: lightblue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="green">
+        劉備
+        <div>
+            &nbsp;&nbsp;劉封
+            <div>
+                &nbsp;&nbsp;&nbsp;小劉封</div>
+        </div>
+    </div>
+    <div class="blue">
+        關羽
+    </div>
+    <div class="red">
+        張飛
+    </div>
+</body>
+
+</html>

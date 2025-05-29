@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        table,
+        th,
+        tr,
+        td {
+            border: 1px solid black;
+        }
+
+        table {
+            width: 50%;
+            height: 200px;
+            text-align: center;
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        .money {
+            color: red;
+            font-weight: bolder;
+        }
+        .money::before {
+            content: 'NTD ';
+        }
+        .money::after {
+            content: ' 元';
+        }
+        .money:hover{
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<h1>價目表</h1>
+
+<body>
+    <table>
+        <tr>
+            <th>產品</th>
+            <th>價格</th>
+        </tr>
+        <tr>
+            <td>美式</td>
+            <td class="money">100</td>
+        </tr>
+        <tr>
+            <td>拿鐵</td>
+            <td class="money">120</td>
+        </tr>
+        <tr>
+            <td>卡布奇諾</td>
+            <td class="money">120</td>
+        </tr>
+        <tr>
+            <td>小白</td>
+            <td class="money">140</td>
+        </tr>
+        <tr>
+            <td>1+1</td>
+            <td class="money">180</td>
+        </tr>
+    </table>
+</body>
+
+</html>
