@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <button type="button" id="myBtn">myBtn
+    </div>
+    <div class="box" id="myBox"></div>
+
+    </button>
+    <!-- <form action="" method="get">
+        <input type="text" name="name" id="">
+        <input type="text" name="mobile" id="">
+        <input type="text" name="address" id="">
+
+    </form> -->
+
+    <!-- student['name'] = student.name = student->name 這三個都一樣的意思 第一個最常見 從student裡面拿name出來 -->
+    <!-- 有加括弧()是function 沒有括弧就是變數 -->
+    <script>
+        console.log('window', window);
+        console.log('window typeof', typeof (window));
+        console.log('document', window.document);
+        console.log('document typeof', typeof (document));
+        console.log('windows.console', window.console);
+
+        // 1.bind
+        let myBtn = document.getElementById('myBtn');
+
+        // 2.action
+        myBtn.addEventListener('click', function () {
+            console.log('myBtn', myBtn);
+            // alert('myBtn click ok');
+            // window.alert('myBtn click ok');
+
+        });
+
+    </script>
+
+</body>
+
+</html>
