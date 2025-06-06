@@ -37,27 +37,41 @@
         background-color: #fdfaf4;
     }
 
+    input {
+        width: 60px;
+        padding: 10px 14px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #fffdf9;
+        color: #333;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
     button {
-            /* background: #fbca1f; */
-            font-family: inherit;
-            padding: 0.6em 1.3em;
-            font-weight: 900;
-            font-size: 12px;
-            border: 3px solid black;
-            border-radius: 0.4em;
-            box-shadow: 0.1em 0.1em;
-            cursor: pointer;
-        }
+        /* background: #fbca1f; */
+        font-family: inherit;
+        padding: 0.6em 1.3em;
+        font-weight: 900;
+        font-size: 12px;
+        border: 3px solid black;
+        border-radius: 0.4em;
+        box-shadow: 0.1em 0.1em;
+        cursor: pointer;
 
-        button:hover {
-            transform: translate(-0.05em, -0.05em);
-            box-shadow: 0.15em 0.15em;
-        }
+    }
 
-        button:active {
-            transform: translate(0.05em, 0.05em);
-            box-shadow: 0.05em 0.05em;
-        }
+    button:hover {
+        transform: translate(-0.05em, -0.05em);
+        box-shadow: 0.15em 0.15em;
+    }
+
+    button:active {
+        transform: translate(0.05em, 0.05em);
+        box-shadow: 0.05em 0.05em;
+    }
 
     caption {
         caption-side: top;
@@ -87,7 +101,9 @@
             <td>美式咖啡</td>
             <td><img src="../images/americano.png" alt="" width="100"></td>
             <td>80</td>
-            <td><button class="qty-btn" data-price="80">1</button></td>
+            <td>
+                <input type="text" class="qty" data-price="80">
+            </td>
             <td class="total"></td>
         </tr>
         <tr>
@@ -95,7 +111,10 @@
             <td>拿鐵</td>
             <td><img src="../images/latte.png" alt="" width="100"></td>
             <td>100</td>
-            <td><button class="qty-btn" data-price="100">2</button></td>
+            <td>
+                <input type="text" class="qty" data-price="100">
+                <!-- <button class="qty-btn" data-price="100">2</button> -->
+            </td>
             <td class="total"></td>
         </tr>
         <tr>
@@ -103,40 +122,63 @@
             <td>1+1</td>
             <td><img src="../images/1+1.png" alt="" width="100"></td>
             <td>140</td>
-            <td><button class="qty-btn" data-price="140">1</button></td>
+            <td>
+                <input type="text" class="qty" data-price="120">
+                <!-- <button class="qty-btn" data-price="140">1</button> -->
+            </td>
             <td class="total"></td>
         </tr>
     </table>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // 綁定按鈕
-        const qtyBtns = $('.qty-btn');
-        console.log('所有按鈕', qtyBtns);
+    <script>
+        $(document).ready(function () {
+            // 綁定按鈕
+            // const qtyBtns = $('.qty-btn');
+            // console.log('所有按鈕', qtyBtns);
 
-        qtyBtns.click(function () {
-            const price = $(this).attr('data-price');  // 拿單價
-            const qty = $(this).text();                // 拿數量
-            const total = price * qty;                 // 直接相乘，JS 會自動轉換
+            $('.qty').change(function () {
+                const price = $(this).attr('data-price');  // 拿單價
+                const qty = $(this).val();                // 拿數量
+                const total = price * qty;                 // 直接相乘，JS 會自動轉換
 
-            console.log('單價是：', price);
-            console.log('數量是：', qty);
-            console.log('總價是：', total);
+                console.log('單價是：', price);
+                console.log('數量是：', qty);
+                console.log('總價是：', total);
 
-            $(this).closest('tr').find('.total').text(total);
+                $(this).closest('tr').find('.total').text(total);
 
-            // 這是沒有將最後一個設定
-            // const row = $(this).closest('tr');         // 找到所在的列
-            // const totalTd = row.find('td').eq(5);      // 找第六格（總價）
-            // totalTd.text(total);                       // 寫入總價
+                // 這是沒有將最後一個設定
+                // const row = $(this).closest('tr');         // 找到所在的列
+                // const totalTd = row.find('td').eq(5);      // 找第六格（總價）
+                // totalTd.text(total);                       // 寫入總價
+            });
         });
-    });
-</script>
+    </script>
 
-<hr>
+    <hr>
 
-合計
+    <button class="btn-total">合計</button>
+    <div id="grand-total"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.btn-total').click(function () {
+                let sum = 0;
+
+                $('.total').each(function () {
+                    let value = $(this).text();      // 例如 "80"
+                    let num = Number(value);         // 轉成數字
+                    sum = Number(sum + num) * 0.8;                 // 加進總合
+                });
+
+                console.log('總合計金額：', sum);
+                $('#grand-total').text('總合計金額：' + sum + ' 元');
+            });
+        });
+
+    </script>
+
 
 </body>
 
