@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    table {
+        width: 100%;
+        max-width: 800px;
+        margin: 20px auto;
+        border-collapse: collapse;
+        font-family: "Helvetica Neue", sans-serif;
+        font-size: 16px;
+        background-color: antiquewhite;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    th,
+    td {
+        padding: 14px 18px;
+        text-align: center;
+        border-bottom: 1px solid #ddd5c7;
+    }
+
+    th {
+        background-color: #f7f1e3;
+        color: #5c4438;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    tr:hover {
+        background-color: #fdfaf4;
+    }
+
+    button {
+            /* background: #fbca1f; */
+            font-family: inherit;
+            padding: 0.6em 1.3em;
+            font-weight: 900;
+            font-size: 12px;
+            border: 3px solid black;
+            border-radius: 0.4em;
+            box-shadow: 0.1em 0.1em;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: translate(-0.05em, -0.05em);
+            box-shadow: 0.15em 0.15em;
+        }
+
+        button:active {
+            transform: translate(0.05em, 0.05em);
+            box-shadow: 0.05em 0.05em;
+        }
+
+    caption {
+        caption-side: top;
+        text-align: center;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #4e3e36;
+    }
+</style>
+
+<body>
+
+    <table>
+        <caption>咖啡店菜單</caption>
+        <tr>
+            <th>ID</th>
+            <th>品名</th>
+            <th>圖示</th>
+            <th>單價</th>
+            <th>數量</th>
+            <th>總價</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>美式咖啡</td>
+            <td><img src="../images/americano.png" alt="" width="100"></td>
+            <td>80</td>
+            <td><button class="qty-btn" data-price="80">1</button></td>
+            <td class="total"></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>拿鐵</td>
+            <td><img src="../images/latte.png" alt="" width="100"></td>
+            <td>100</td>
+            <td><button class="qty-btn" data-price="100">2</button></td>
+            <td class="total"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>1+1</td>
+            <td><img src="../images/1+1.png" alt="" width="100"></td>
+            <td>140</td>
+            <td><button class="qty-btn" data-price="140">1</button></td>
+            <td class="total"></td>
+        </tr>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // 綁定按鈕
+        const qtyBtns = $('.qty-btn');
+        console.log('所有按鈕', qtyBtns);
+
+        qtyBtns.click(function () {
+            const price = $(this).attr('data-price');  // 拿單價
+            const qty = $(this).text();                // 拿數量
+            const total = price * qty;                 // 直接相乘，JS 會自動轉換
+
+            console.log('單價是：', price);
+            console.log('數量是：', qty);
+            console.log('總價是：', total);
+
+            $(this).closest('tr').find('.total').text(total);
+
+            // 這是沒有將最後一個設定
+            // const row = $(this).closest('tr');         // 找到所在的列
+            // const totalTd = row.find('td').eq(5);      // 找第六格（總價）
+            // totalTd.text(total);                       // 寫入總價
+        });
+    });
+</script>
+
+<hr>
+
+合計
+
+</body>
+
+</html>
