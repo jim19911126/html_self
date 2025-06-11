@@ -8,6 +8,13 @@
 </head>
 
 <style>
+    .menu {
+        position: relative;
+        width: 800px;
+        margin: 0 auto;
+        padding-bottom: 60px
+    }
+
     table {
         width: 100%;
         max-width: 800px;
@@ -81,54 +88,89 @@
         font-weight: bold;
         color: #4e3e36;
     }
+
+    .total-area {
+        position: absolute;
+        margin-top: 20px;
+        /* 根據你 <hr> 的位置做微調 */
+        right: 0;
+        background-color: #fffaf3;
+        padding: 15px 25px;
+        border: 2px solid #5c4438;
+        border-radius: 10px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+        font-family: "Helvetica Neue", sans-serif;
+        font-size: 16px;
+        color: #5c4438;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 9;
+    }
 </style>
 
 <body>
+    <div class="menu">
+        <table>
+            <caption>咖啡店菜單</caption>
+            <tr>
+                <th>品名</th>
+                <th>圖示</th>
+                <th>單價</th>
+                <th>數量</th>
+                <th>總價</th>
+            </tr>
 
-    <table>
-        <caption>咖啡店菜單</caption>
-        <tr>
-            <th>ID</th>
-            <th>品名</th>
-            <th>圖示</th>
-            <th>單價</th>
-            <th>數量</th>
-            <th>總價</th>
-        </tr>
+            <tr>
+                <th>美式咖啡</th>
+                <td><img src="../images/americano.png" alt="" width="100"></td>
+                <td>80</td>
+                <td>
+                    <input type="text" class="qty" data-price="80">
+                </td>
+                <td class="total"></td>
+            </tr>
+            <tr>
+                <th>拿鐵</th>
+                <td><img src="../images/latte.png" alt="" width="100"></td>
+                <td>100</td>
+                <td>
+                    <input type="text" class="qty" data-price="100">
+                    <!-- <button class="qty-btn" data-price="100">2</button> -->
+                </td>
+                <td class="total"></td>
+            </tr>
+            <tr>
+                <th>卡布奇諾</th>
+                <td><img src="../images/latte.png" alt="" width="100"></td>
+                <td>100</td>
+                <td>
+                    <input type="text" class="qty" data-price="100">
+                    <!-- <button class="qty-btn" data-price="100">2</button> -->
+                </td>
+                <td class="total"></td>
+            </tr>
+            <tr>
+                <th>1+1</th>
+                <td><img src="../images/1+1.png" alt="" width="100"></td>
+                <td>140</td>
+                <td>
+                    <input type="text" class="qty" data-price="140">
+                    <!-- <button class="qty-btn" data-price="140">1</button> -->
+                </td>
+                <td class="total"></td>
+            </tr>
+        </table>
+        <div class="total-area">
+            <button class="btn-total">合計</button>
+            <div id="grand-total">
+                活動：一千以上九折,三千以上八折
+                <br>
+                按合計後顯示總價
+            </div>
 
-        <tr>
-            <td>1</td>
-            <td>美式咖啡</td>
-            <td><img src="../images/americano.png" alt="" width="100"></td>
-            <td>80</td>
-            <td>
-                <input type="text" class="qty" data-price="80">
-            </td>
-            <td class="total"></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>拿鐵</td>
-            <td><img src="../images/latte.png" alt="" width="100"></td>
-            <td>100</td>
-            <td>
-                <input type="text" class="qty" data-price="100">
-                <!-- <button class="qty-btn" data-price="100">2</button> -->
-            </td>
-            <td class="total"></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>1+1</td>
-            <td><img src="../images/1+1.png" alt="" width="100"></td>
-            <td>140</td>
-            <td>
-                <input type="text" class="qty" data-price="120">
-                <!-- <button class="qty-btn" data-price="140">1</button> -->
-            </td>
-            <td class="total"></td>
-        </tr>
-    </table>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -156,24 +198,36 @@
         });
     </script>
 
-    <hr>
-
-    <button class="btn-total">合計</button>
-    <div id="grand-total"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.btn-total').click(function () {
                 let sum = 0;
+                let disPrice = 0
+                let message = '';
 
                 $('.total').each(function () {
                     let value = $(this).text();      // 例如 "80"
-                    let num = Number(value);         // 轉成數字
-                    sum = Number(sum + num) * 0.8;                 // 加進總合
+                    let num = Number(value) || 0;         // 轉成數字
+                    sum = Number(sum + num);                 // 加進總合
                 });
 
-                console.log('總合計金額：', sum);
-                $('#grand-total').text('總合計金額：' + sum + ' 元');
+                if (sum > 1000 && sum < 3000) {
+                    disPrice = Math.round(sum * 0.9);
+                    message = '總額（一千元以上打 9 折）：' + disPrice + ' 元';
+
+                } else if (sum > 3000) {
+                    disPrice = Math.round(sum * 0.8);
+                    message = '總額（三千元以上打 8 折）：' + disPrice + ' 元';
+
+                } else {
+                    disPrice = sum
+                    message = '總額（無折扣）：' + disPrice + ' 元';
+
+                }
+
+                console.log('總合計金額：', disPrice);
+                $('#grand-total').text(message);
             });
         });
 
