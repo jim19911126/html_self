@@ -43,6 +43,10 @@ h1 {
     /* background-color: gray; */
     border: 1px solid black;
     border-top: 0;
+    color: black;
+    font-family: '標楷體';
+    font-size: 16px;
+    text-align: center;
 }
 
 .container-right {
