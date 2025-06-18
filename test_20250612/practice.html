@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header {
+            width: 1024px;
+            height: 65px;
+            background-color: lightblue;
+            margin: auto;
+        }
+
+        .container {
+            display: flex;
+            width: 1024px;
+            height: calc(768px - 65px - 20px);
+            background-color: lightgray;
+            margin: auto;
+        }
+
+        .container-left {
+            height: 100%;
+            width: 215px;
+            background-color: darkcyan;
+        }
+
+        .container-left-top {
+            height: calc(100% - 25px);
+            width: 100%;
+            background-color: lightsalmon;
+        }
+
+        .container-left-btm {
+            height: 25px;
+            width: 100%;
+            background-color: khaki;
+        }
+
+        .container-right {
+            width: calc(1024px - 215px);
+            height: 100%;
+            background-color: lightgreen;
+        }
+
+        .container-right-top {
+            width: 100%;
+            height: 29px;
+            background-color: lightseagreen;
+        }
+
+        .container-right-btm {
+            width: 100%;
+            height: calc(100% - 29px);
+            background-color: lightsteelblue;
+        }
+
+        .footer {
+            width: 1024px;
+            height: 24px;
+            background-color: lightyellow;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        標題
+    </header>
+
+    <div class="container">
+        <div class="container-left">
+            <div class="container-left-top">
+                CLT
+            </div>
+            <div class="container-left-btm">
+                CLB
+            </div>
+        </div>
+
+        <div class="container-right">
+            <div class="container-right-top">
+                CRT
+            </div>
+            <div class="container-right-btm">
+                <iframe src="./main.html" frameborder="0"></iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        頁尾
+    </footer>
+</body>
+
+</html>

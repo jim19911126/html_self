@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 100px;
+            background-color: lightblue;
+        }
+
+        .box2 {
+            width: 300px;
+            height: 300px;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="myBox">
+    </div>
+    <div class="box2" id="myBox2">
+    </div>
+
+    <br>
+
+    <button type="button" id="slideUp">Slide Up</button>
+    <button type="button" id="slideDown">Slide Down</button>
+    <button type="button" id="toggle">Toggle</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(document).ready(function () {
+            // const myBox = $('#myBox');
+            const myBox2 = $('#myBox2');
+            const slideUp = $('#slideUp');
+            const slideDown = $('#slideDown');
+            const toggle = $('#toggle');
+
+            slideUp.click(function (e) {
+                myBox2.slideUp(1000)
+            })
+
+            slideDown.click(function (e) {
+                myBox2.slideDown(1000)
+            })
+
+            toggle.click(function (e) {
+                myBox2.slideToggle(1000)
+            })
+
+
+        })
+    </script>
+
+</body>
+
+</html>

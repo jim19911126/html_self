@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>複利計算</title>
+    <style>
+        .container {
+            width: 80%;
+            height: 90vh;
+            background-color: lightblue;
+            margin: auto;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .bg-pink {
+            background-color: lightpink;
+        }
+
+        button {
+            width: 120px;
+        }
+
+        table {
+            margin: auto;
+            margin-top: 10px;
+            width: 80%;
+            background-color: lightgray;
+            border-collapse: collapse;
+        }
+
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>複利計算</h3>
+        <hr>
+        <p>
+            投入(萬) &nbsp;&nbsp;&nbsp;<input type="text" id="money" value="100">
+        </p>
+        <p>
+            投報(%) &nbsp;&nbsp;&nbsp;<input type="text" id="rate" value="8">
+        </p>
+        <p>
+            年限(年) &nbsp;&nbsp;&nbsp;<input type="text" id="year" value="10">
+        </p>
+        <p>
+            <button type="button" id="myBtn">送出</button>
+        </p>
+    </div>
+
+    <div class="container bg-pink">
+        <h3>試算結果</h3>
+        <hr>
+        <table id="myTable">
+            <tr>
+                <th>年</th>
+                <th>金額</th>
+            </tr>
+        </table>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // 綁定元素
+            const money = $('#money');
+            const rate = $('#rate');
+            const year = $('#year');
+            const myBtn = $('#myBtn');
+            const myTable = $('#myTable');
+
+            // 初始化資料
+            let currentYear = 0;
+            let totalYear = 0;
+            let sumMoney = 0;
+            let rateValue = 0;
+
+            myBtn.click(function () {
+                // 第一次點的時候才設定初始值
+                if (currentYear === 0) {
+                    sumMoney = Number(money.val());
+                    rateValue = Number(rate.val());
+                    totalYear = Number(year.val());
+                }
+
+                // 還有年份可加
+                if (currentYear < totalYear) {
+                    currentYear++;
+                    if (currentYear > 1) {
+                        sumMoney *= (1 + rateValue / 100);
+                    }
+
+                    // 加入新列
+                    myTable.append(`
+                        <tr>
+                            <td>${currentYear}</td>
+                            <td>${sumMoney.toFixed(2)}</td>
+                        </tr>
+                    `);
+                } else {
+                    alert("已試算完畢！");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
