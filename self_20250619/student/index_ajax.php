@@ -49,8 +49,7 @@
         <Script>
             $(document).ready(function () {
                 const myTable = $('#myTable');
-$.ajax
-    
+
                 let url = "./data/data.php";
                 $.ajax({
                     type: "get",
