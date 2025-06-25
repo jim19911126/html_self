@@ -4,7 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AJAX 計算機</title>
+    <style>
+    /* 全頁置中，並給淡灰背景 */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f2f2f2;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    /* 卡片式表單 */
+    #myForm {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 20rem;
+    }
+
+    /* 讓每個 <p> 都有一點間距 */
+    #myForm p {
+      margin: 1rem 0;
+    }
+
+    /* 輸入框風格 */
+    #myForm input[type="text"] {
+      width: 5rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
+      text-align: right;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    #myForm input[type="text"]:focus {
+      outline: none;
+      border-color: #66afe9;
+    }
+
+    /* 按鈕風格 */
+    .btn-total {
+      display: inline-block;
+      width: 3rem;
+      height: 3rem;
+      line-height: 3rem;
+      font-size: 1.5rem;
+      color: #fff;
+      background-color: #28a745;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+    .btn-total:hover {
+      background-color: #218838;
+    }
+    .btn-total:active {
+      transform: scale(0.95);
+    }
+
+    /* 顯示結果的區塊 */
+    .total-area {
+      margin-top: 1.5rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #333;
+      min-height: 1.5em;
+    }
+  </style>
 </head>
 
 <body>
