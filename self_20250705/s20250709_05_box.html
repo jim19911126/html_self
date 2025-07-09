@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 載入bs5 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container mt-3">
+        <h3>Pop Icons</h3>
+        <p>Click on the button to see the icon you want to know more about.</p>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+            Lady Gaga
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myModal2">
+            Taylor Swift
+        </button>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Lady Gaga</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Stefani Joanne Angelina Germanotta (born March 28, 1986), known professionally as Lady Gaga, is
+                    an American singer, songwriter, and actress. Known for her image reinventions and versatility across
+                    the entertainment industry, she is an influential figure in popular music. With estimated sales of
+                    124 million records, she is one of the best selling music artists of all time. Publications such as
+                    Billboard and Rolling Stone have ranked her among the greatest artists in history.
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="myModal2">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Taylor Swift</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Taylor Alison Swift (born December 13, 1989) is an American singer-songwriter. Known for her
+                    autobiographical songwriting, artistic versatility, and cultural impact, Swift is one of the
+                    best-selling music artists in history, with estimated sales of over 200 million records. She is also
+                    the highest-grossing music performer and the richest female musician—the first billionaire with
+                    music as their main income.
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- 載入bs5 js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js"
+        integrity="sha512-zKeerWHHuP3ar7kX2WKBSENzb+GJytFSBL6HrR2nPSR1kOX1qjm+oHooQtbDpDBSITgyl7QXZApvDfDWvKjkUw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- 載入jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(document).ready(function () {
+            // 1.bind
+            const info = $('.bg-info');
+            const warning = $('.bg-warning');
+            const danger = $('.bg-danger');
+            const box = $('.box');
+
+
+            // 2.action
+            // info.click(function (e) {
+            //     console.log('info ok');
+
+            // });
+
+            box.click(function (e) {
+                console.log('this', this);
+                let tmpText = $(this).attr('data-text');
+                console.log('tmpText', tmpText);
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>
