@@ -24,9 +24,14 @@
             /* 保持比例，裁切超出的部分 */
         }
 
-        .navbar-brand img {
-            height: 20px;
+        .nav-link {
+            color: rgb(230, 230, 223) !important;
+        }
+
+        .navbar-logo img {
+            height: 30px;
             width: auto;
+            margin-right: 5px;
             /* 確保等比例縮放 */
         }
 
@@ -107,6 +112,10 @@
             text-align: center;
         }
 
+        .modal-body {
+            font-family: Georgia, 'Times New Roman', Times, serif
+        }
+
         .footer {
             width: 100%;
             height: 30px;
@@ -122,9 +131,9 @@
 <body>
 
     <!-- nav -->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-brand bg-secondary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="javascript:void(0)"><img src="./images/1715168828695-10.png" alt=""></a>
+            <a class="navbar-logo" href="javascript:void(0)"><img src="./images/1715168828695-10.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -136,8 +145,47 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#box2">Film</a>
                     </li>
+                    <li class="nav-item dropdown" style="position: relative;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Album
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Taylor_Swift_(album)"
+                                    target="_blank" data-cover="ts.jpg">Taylor Swift</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://en.wikipedia.org/wiki/Fearless_(Taylor_Swift_album)" target="_blank"
+                                    data-cover="fearless.jpg">Fearless</a></li>
+                            <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Speak_Now" target="_blank"
+                                    data-cover="sn.jpg">Speak Now</a></li>
+                            <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Red_(Taylor_Swift_album)"
+                                    target="_blank" data-cover="red.jpg">RED</a></li>
+                            <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/1989_(Taylor_Swift_album)"
+                                    target="_blank" data-cover="1989.jpg">1989</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://en.wikipedia.org/wiki/Reputation_(Taylor_Swift_album)" target="_blank"
+                                    data-cover="rep.jpg">reputation</a></li>
+                            <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Lover_(Taylor_Swift_album)"
+                                    target="_blank" data-cover="lover.jpg">Lover</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://en.wikipedia.org/wiki/Folklore_(Taylor_Swift_album)" target="_blank"
+                                    data-cover="folklore.jpg">folklore</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://en.wikipedia.org/wiki/Evermore_(Taylor_Swift_album)" target="_blank"
+                                    data-cover="evermore.jpg">evermore</a></li>
+                            <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Midnights" target="_blank"
+                                    data-cover="midnights.jpg">Midnights</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://en.wikipedia.org/wiki/The_Tortured_Poets_Department" target="_blank"
+                                    data-cover="ttpd.jpg">The Tortured Poets Department</a></li>
+
+                        </ul>
+                        <div id="album-cover"
+                            style="display:none; position:absolute; left:150px; top:500px; width:100px; height:100px; background:#eee center/cover no-repeat; box-shadow:0 2px 8px #888; z-index:1050;">
+                        </div>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#box3">Music</a>
+                        <a class="nav-link" href="#box3">Stream</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
@@ -206,7 +254,10 @@
         <!-- container box2 -->
         <div id="box2"></div>
         <div class="container-fluid mt-3 box2">
-            <h2>Watch The Eras Tour on Disney+</h2>
+            <h2>
+                Watch The Eras Tour on Disney+
+                <span style="font-size: 50%; color: #666; margin-left: 4px;">(Subscription required.)</span>
+            </h2>
             <div class="ratio ratio-16x9">
                 <iframe src="https://www.youtube.com/embed/5UBl0rLEl0w?si=1LwviZJmF5XOvq_C" title="YouTube video player"
                     frameborder="0"
@@ -229,8 +280,39 @@
                             sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
                             src="https://embed.music.apple.com/us/playlist/taylor-swifts-eras-tour-set-list/pl.57891bdd1bc840948374f1c4cbe9c840"></iframe>
                         <div class="d-grid mt-3">
-                            <button type="button" class="btn btn-primary btn-block"
-                                style="background-color: red; border: 0px;">Listen on Apple Music</button>
+                            <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal"
+                                data-bs-target="#myModalAp" style="background-color: red; border: 0px;">
+                                More on <img src="./images/apple.png" style="height: 25px;" alt="">
+                            </button>
+                        </div>
+                        <!-- The Modal -->
+                        <div class="modal" id="myModalAp">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Want more Taylor?</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        You will be redirecting to Apple Music, press the button to continue, you might
+                                        need a subscription to use Apple Music.
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn" data-bs-dismiss="modal"
+                                            style="background-color: red; color: white;"
+                                            onclick="window.open('https://music.apple.com/us/artist/taylor-swift/159260351', '_blank');">
+                                            Go To Apple Music
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -241,10 +323,40 @@
                             sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
                             src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0D996ZXujBy?utm_source=generator"></iframe>
                         <div class="d-grid mt-3">
-                            <button type="button" class="btn btn-primary btn-block"
-                                style="background-color: lawngreen; border: 0px; color: black">Listen on
-                                Spotify</button>
+                            <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal"
+                                data-bs-target="#myModalSp"
+                                style="background-color: lawngreen; border: 0px; color: black">
+                                More on <img src="./images/spotify.png" style="height: 25px;" alt="">
+                            </button>
                         </div>
+                        <div class="modal" id="myModalSp">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Want more Taylor?</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        You will be redirecting to Spotify, press the button to continue, you might
+                                        need a subscription to use Spotify.
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn" data-bs-dismiss="modal"
+                                            style="background-color: lawngreen;"
+                                            onclick="window.open('https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02?si=TKWaDezrSc6T4FdDxuxrKA','_blank');">Go
+                                            To Spotify</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-12 col-sm-4 mt-3">
@@ -256,10 +368,39 @@
                             src="https://widget.kkbox.com/v1/?id=CrWYmLVTBQ3cUeS7KV&amp;type=playlist&amp;terr=tw&amp;lang=tc"></iframe>
 
                         <div class="d-grid mt-3">
-                            <button type="button" class="btn btn-primary btn-block"
-                                style="border: 0px">Listen on
-                                KKBOX</button>
+                            <button type="button" class="btn btn-block" data-bs-toggle="modal"
+                                data-bs-target="#myModalKk" style="border: 0px; background-color: skyblue;">
+                                More on <img src="./images/kkbox.png" style="height: 25px;" alt="">
+                            </button>
                         </div>
+                        <div class="modal" id="myModalKk">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Want more Taylor?</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        You will be redirecting to KKBOX, press the button to continue, you might
+                                        need a subscription to use KKBOX.
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn" data-bs-dismiss="modal"
+                                            style="background-color: skyblue;"
+                                            onclick="window.open('https://kkbox.fm/0p0B9I','_blank');">Go
+                                            To KKBOX</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -275,8 +416,8 @@
 
 
     <!-- 載入bs5 js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js"
-        integrity="sha512-zKeerWHHuP3ar7kX2WKBSENzb+GJytFSBL6HrR2nPSR1kOX1qjm+oHooQtbDpDBSITgyl7QXZApvDfDWvKjkUw=="
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"
+        integrity="sha512-Tc0i+vRogmX4NN7tuLbQfBxa8JkfUSAxSFVzmU31nVdHyiHElPPy2cWfFacmCJKw0VqovrzKhdd2TSTMdAxp2g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- 載入jquery -->
@@ -285,12 +426,24 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        $(document).ready(function () {
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                const cover = this.getAttribute('data-cover');
+                const coverDiv = document.getElementById('album-cover');
+                if (cover) {
+                    coverDiv.style.display = 'block';
+                    coverDiv.style.background = `url('./images/${cover}') center/cover no-repeat`;
+                    coverDiv.style.top = this.offsetTop + "px";
+                } else {
+                    coverDiv.style.display = 'none';
+                }
 
-
+            });
+            item.addEventListener('mouseleave', function () {
+                document.getElementById('album-cover').style.display = 'none';
+            });
         });
     </script>
-
 </body>
 
 </html>
