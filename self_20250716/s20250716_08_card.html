@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 載入bs5 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            background: #f6f5f1;
+            /* 溫柔米色背景 */
+            font-family: 'Noto Sans JP', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+            color: #363636;
+            letter-spacing: 0.03em;
+        }
+
+        .container {
+            padding-top: 32px;
+            padding-bottom: 32px;
+        }
+
+        .box {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px 0 rgba(192, 198, 204, 0.12), 0 1.5px 4px 0 rgba(151, 161, 176, 0.10);
+            padding: 24px 20px 16px 20px;
+            transition: box-shadow 0.2s;
+            border: 1px solid #ececec;
+            min-height: 320px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box:hover {
+            box-shadow: 0 8px 32px 0 rgba(170, 185, 198, 0.17), 0 3px 8px 0 rgba(151, 161, 176, 0.13);
+            border-color: #b7d3df;
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .kanji {
+            font-size: 2.2em;
+            color: #5c93bb;
+            /* 淡藍 */
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.2em;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        .kana,
+        .romaji {
+            color: #73a69b;
+            /* 淡青綠 */
+            font-size: 1.05em;
+            margin-bottom: 0.2em;
+            text-align: center;
+            letter-spacing: 0.03em;
+        }
+
+        .zh {
+            color: #de7d80;
+            /* 淡粉紅 */
+            font-size: 1em;
+            margin-bottom: 0.2em;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .id {
+            position: absolute;
+            top: 12px;
+            right: 22px;
+            font-size: 1em;
+            color: #d4c7b6;
+            font-family: monospace;
+            font-weight: 400;
+            opacity: 0.85;
+        }
+
+        .box {
+            position: relative;
+        }
+
+        .exm-jp {
+            color: #54726c;
+            background: #f1f7f6;
+            border-radius: 7px;
+            padding: 6px 10px;
+            font-size: 1em;
+            margin-top: 12px;
+            margin-bottom: 3px;
+            line-height: 1.45;
+            font-family: 'Noto Sans JP', 'PingFang TC', sans-serif;
+        }
+
+        .exm-zh {
+            color: #8b8682;
+            font-size: 0.97em;
+            margin-bottom: 0;
+            margin-left: 1em;
+            margin-top: 2px;
+            font-family: 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 575.98px) {
+            .box {
+                min-height: 220px;
+                padding: 18px 10px 12px 10px;
+            }
+
+            .kanji {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-12 col-sm-4 mt-3">
+                <div class="box">
+                    <p class="id">${value.id}</p>
+                    <p class="kanji">${value.kanji}</p>
+                    <p class="kana">${value.kana}</p>
+                    <p class="romaji">${value.romaji}</p>
+                    <p class="zh">${value.meaning_zh}</p>
+                    <p class="exm-jp">${value.example_jp}</p>
+                    <p class="exm-zh">${value.example_zh}</p>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+
+
+
+    <!-- 載入bs5 js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js"
+        integrity="sha512-zKeerWHHuP3ar7kX2WKBSENzb+GJytFSBL6HrR2nPSR1kOX1qjm+oHooQtbDpDBSITgyl7QXZApvDfDWvKjkUw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- 載入jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="./data/data.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const myRow = $('.row');
+            console.log('data', data);
+
+            data.forEach(function name(value, key) {
+                console.log('key', key);
+                console.log('value', value);
+                let tmpText = `
+            <div class="col-12 col-sm-4 mt-3">
+                <div class="box">
+                    <p class="id">${value.id}</p>
+                    <p class="kanji">${value.kanji}</p>
+                    <p class="kana">${value.kana}</p>
+                    <p class="romaji">${value.romaji}</p>
+                    <p class="zh">${value.meaning_zh}</p>
+                    <p class="exm-jp">${value.example_ja}</p>
+                    <p class="exm-zh">${value.example_zh}</p>
+                </div>
+            </div>
+            `;
+
+                myRow.append(tmpText);
+
+
+
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>
