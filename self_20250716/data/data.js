@@ -6,7 +6,7 @@ let data=[
     "romaji": "yakusoku",
     "meaning_zh": "約定；約束",
     "example_ja": "明日、10時に駅で約束があります。",
-    "example_zh": "明天十點在車站有約定。"
+    "example_zh": "明天十點在車站有約。"
   },
   {
     "id": 2,
