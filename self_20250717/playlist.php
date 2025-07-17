@@ -37,13 +37,13 @@ $artpop = new Setlist();
 dd($artpop);
 
 $artpop->album = "ARTPOP";
-$artpop->song = "紅色";
+$artpop->song = "Applause";
 $artpop->play();
 
 
 $mayhem = new Setlist();
-$mayhem->album = "芒果";
-$mayhem->song = "黃色";
+$mayhem->album = "Mayhem";
+$mayhem->song = "LoveDrug";
 $mayhem->play();
 
 
