@@ -18,6 +18,14 @@
         button {
             width: 20%;
         }
+
+        .hide-btn {
+            display: none;
+        }
+
+        .show-btn {
+            display: inline;
+        }
     </style>
 
 </head>
@@ -32,21 +40,21 @@
                 投籃大賽
             </div>
             <div class="col-2">
-                <span>最高分</span>
+                最高分紀錄：<span id="highestScore">0</span>
             </div>
         </div>
     </div>
     <hr>
-    <div class="container">
+    <div class="container mt-3">
         <div class="row">
             <div class="col-2">
-                <img src="./image/player.png" alt="basket">
+                <img src="./image/player.png" alt="player">
             </div>
             <div class="col-8 text-center">
-                100
+                <span id="score">0</span>
             </div>
             <div class="col-2">
-                <img src="./image/basket.png" alt="">
+                <img src="./image/basket.png" alt="basket">
             </div>
         </div>
     </div>
@@ -54,8 +62,9 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col text-center">
-                <button>開始</button>
-                <button>停止</button>
+                <button type="button" id="startBtn" class="btn btn-primary class-btn me-5">開始</button>
+                <button type="button" id="throwBtn" class="btn btn-success class-btn me-5">投籃</button>
+                <button type="button" id="stopBtn" class="btn btn-danger class-btn me-5">停止</button>
             </div>
         </div>
     </div>
@@ -71,26 +80,48 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        const startBtn = document.getElementById("startBtn");
+        const throwBtn = document.getElementById("throwBtn");
+        const stopBtn = document.getElementById("stopBtn");
+        const scoreSpan = document.getElementById("score");
+        const highestScoreSpan = document.getElementById("highestScore");
+        let score=0;
+        let highestScore=0;
 
-        // array method 只能用在array上
-        // typeof 查看array and object 都是顯示object
-        // 如果要判斷是否為array
-        // Array.isArray(myArr)
-        let myArr = [1, 2, 3, 4, 5];
-        let myObj = { s1: 'amy', s2: 'bob' };
-        console.log('myArr', myArr);
-        console.log('myArr typeof', typeof (myArr));
-        // isArray
-        console.log('Array.isArray(myArr)', Array.isArray(myArr));
+        console.log('startBtn', startBtn);
+        console.log('throwBtn', throwBtn);
+        console.log('stopBtn', stopBtn);
 
-        console.log('myObj', myObj);
-        console.log('myObj typeof', typeof (myObj));
-        console.log('Array.isArray(myObj)', Array.isArray(myObj));
-        myArr.forEach(element => {
-            console.log('element', element);
+        throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 hide-btn')
+
+
+        startBtn.addEventListener('click', function name(params) {
+            console.log('startBtn click ok');
+            this.setAttribute('class', 'btn btn-primary class-btn me-5 hide-btn');
+            throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 show-btn')
+
+        });
+        throwBtn.addEventListener('click', function name(params) {
+            console.log('throwBtn click ok');
+
+            score +=2;
+            scoreSpan.innerHTML = score;
+
+            if (score>highestScore) {
+                highestScore=score;
+                highestScoreSpan.innerHTML = highestScore
+                
+            }
+
+        });
+        stopBtn.addEventListener('click', function name(params) {
+            console.log('stopBtn click ok');
 
         });
 
+        $(document).ready(function name(params) {
+
+        });
 
     </script>
 </body>
