@@ -86,9 +86,12 @@
         const scoreSpan = document.getElementById("score");
         const highestScoreSpan = document.getElementById("highestScore");
         const timerSpan = document.getElementById("timer");
-        let score=0;
-        let highestScore=0;
-        let startTime=33;
+        let score = 0;
+        let highestScore = 0;
+        let startTime = 20;
+        let bonusTime = 5;
+        let myInterval = null;
+
 
         console.log('startBtn', startBtn);
         console.log('throwBtn', throwBtn);
@@ -102,27 +105,38 @@
             this.setAttribute('class', 'btn btn-primary class-btn me-5 hide-btn');
             throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 show-btn');
 
-            setInterval(() => {
+            myInterval = setInterval(() => {
                 startTime--;
                 timerSpan.innerHTML = startTime;
-                if (startTime < 30) {
-                    timerSpan.setAttribute('class','text-danger display-3')
-                    
+                if (startTime < 1) {
+                    clearInterval(myInterval);
                 }
-                
+                if (startTime < bonusTime) {
+                    timerSpan.setAttribute('class', 'text-danger display-3')
+                }
+
             }, 1000);
 
         });
         throwBtn.addEventListener('click', function name(params) {
             console.log('throwBtn click ok');
-
-            score +=2;
             scoreSpan.innerHTML = score;
 
-            if (score>highestScore) {
-                highestScore=score;
+            if (startTime < 1) {
+                return false;
+
+            }
+
+            if (startTime > bonusTime) {
+                score += 2;
+            } else {
+                score += 3;
+
+            }
+            scoreSpan.innerHTML = score;
+            if (score > highestScore) {
+                highestScore = score;
                 highestScoreSpan.innerHTML = highestScore
-                
             }
 
         });
