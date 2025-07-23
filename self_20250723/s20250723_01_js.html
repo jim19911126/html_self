@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-2">
-                <span>60</span>
+                剩下<span class="text info display-3" id="timer">0</span>秒
             </div>
             <div class="col-8">
                 投籃大賽
@@ -85,8 +85,10 @@
         const stopBtn = document.getElementById("stopBtn");
         const scoreSpan = document.getElementById("score");
         const highestScoreSpan = document.getElementById("highestScore");
+        const timerSpan = document.getElementById("timer");
         let score=0;
         let highestScore=0;
+        let startTime=33;
 
         console.log('startBtn', startBtn);
         console.log('throwBtn', throwBtn);
@@ -98,7 +100,17 @@
         startBtn.addEventListener('click', function name(params) {
             console.log('startBtn click ok');
             this.setAttribute('class', 'btn btn-primary class-btn me-5 hide-btn');
-            throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 show-btn')
+            throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 show-btn');
+
+            setInterval(() => {
+                startTime--;
+                timerSpan.innerHTML = startTime;
+                if (startTime < 30) {
+                    timerSpan.setAttribute('class','text-danger display-3')
+                    
+                }
+                
+            }, 1000);
 
         });
         throwBtn.addEventListener('click', function name(params) {
