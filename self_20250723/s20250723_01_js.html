@@ -34,13 +34,13 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-2">
-                剩下<span class="text info display-3" id="timer">0</span>秒
+                剩下<span class="text info display-3" id="timer"> </span>秒
             </div>
             <div class="col-8">
                 投籃大賽
             </div>
             <div class="col-2">
-                最高分紀錄：<span id="highestScore">0</span>
+                最高分紀錄：<span id="highestScore"></span>
             </div>
         </div>
     </div>
@@ -90,6 +90,18 @@
         let highestScore = 0;
         let startTime = 20;
         let bonusTime = 5;
+        
+        // localStorage.setItem('highestScore',50);
+        let getHighestScore = Number(localStorage.getItem('highestScore'));
+        if (getHighestScore) {
+            highestScore=getHighestScore;
+            
+        }
+        console.log('highestScore',highestScore);
+        console.log('getHighestSocre typeof',typeof (getHighestScore));
+        
+        
+
         let myInterval = null;
 
 
@@ -120,7 +132,6 @@
         });
         throwBtn.addEventListener('click', function name(params) {
             console.log('throwBtn click ok');
-            scoreSpan.innerHTML = score;
 
             if (startTime < 1) {
                 return false;
@@ -134,14 +145,27 @@
 
             }
             scoreSpan.innerHTML = score;
+
             if (score > highestScore) {
                 highestScore = score;
-                highestScoreSpan.innerHTML = highestScore
+                localStorage.setItem('highestScore',highestScore);
+                highestScoreSpan.innerHTML = highestScore;
             }
 
         });
         stopBtn.addEventListener('click', function name(params) {
             console.log('stopBtn click ok');
+
+            score=0;
+            scoreSpan.innerHTML=score;
+
+            clearInterval(myInterval);
+            startTime=
+            timerSpan.innerHTML=startTime;
+            timerSpan.setAttribute('class','text-info display-3')
+
+            throwBtn.setAttribute('class',' btn btn-success class-btn me-5 hide-btn');
+            startBtn.setAttribute('class', 'btn btn-primary class-btn me-5 show-btn');
 
         });
 
