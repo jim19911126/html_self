@@ -10,13 +10,8 @@
         integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        img {
-            width: 100%;
-            height: 100%;
-        }
-
-        button {
-            width: 20%;
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', 'Microsoft JhengHei', sans-serif;
         }
 
         .hide-btn {
@@ -32,44 +27,42 @@
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-2 text-center">
-                剩下<span class="text info display-3" id="timer"> </span>秒
-            </div>
-            <div class="col-8 text-center">
-                投籃大賽
-            </div>
-            <div class="col-2 text-center">
-                最高分紀錄：<span id="highestScore"></span>
-            </div>
+        <div class="row text-center align-items-center bg-primary text-white rounded shadow-sm py-3 mb-3">
+            <div class="col-12 col-md-3">剩下<span class="text-info display-3" id="timer"></span>秒</div>
+            <div class="col-12 col-md-6 my-2 my-md-0 h2">投籃大賽</div>
+            <div class="col-12 col-md-3">最高分紀錄：<span id="highestScore"></span></div>
         </div>
     </div>
-    <hr>
+    <div class="container px-0">
+        <hr>
+    </div>
     <div class="container mt-3">
-        <div class="row">
-            <div class="col-2">
-                <img src="./image/player.png" alt="player">
+        <div class="row justify-content-center text-center align-items-center bg-light rounded shadow-sm py-3 mb-3">
+            <div class="col-auto"><img src="./image/player.png" class="img-fluid" alt="player" width="300"></div>
+            <div class="col-auto mx-3 text-center">
+                <div class="fs-5 mb-1">目前分數</div>
+                <div class="h4 mb-0"><span id="score"></span></div>
             </div>
-            <div class="col-8 text-center">
-                目前分數
-                <br>
-                <span id="score"></span>
-            </div>
-            <div class="col-2">
-                <img src="./image/basket.png" alt="basket">
-            </div>
+            <div class="col-auto"><img src="./image/basket.png" class="img-fluid" alt="basket" width="300"></div>
         </div>
     </div>
-    <hr>
+    <div class="container px-0">
+        <hr>
+    </div>
     <div class="container">
-        <div class="row">
-            <div class="d-flex justify-content-center align-items-center gap-3">
-                <button id="startBtn" class="btn btn-primary">開始</button>
-                <button id="pauseBtn" class="btn btn-warning">暫停</button>
-                <button id="throwBtn" class="btn btn-success">投籃</button>
-                <button id="stopBtn" class="btn btn-danger">停止</button>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center my-3 bg-dark">
+                    <button id="startBtn" class="btn btn-primary btn-lg mx-1 shadow-sm">開始</button>
+                    <button id="pauseBtn" class="btn btn-warning btn-lg mx-1 shadow-sm hide-btn ms-5">暫停</button>
+                    <button id="throwBtn" class="btn btn-success btn-lg mx-1 shadow-sm hide-btn">投籃</button>
+                    <button id="stopBtn" class="btn btn-danger btn-lg mx-1 shadow-sm hide-btn">停止</button>
+                </div>
             </div>
         </div>
+
+
     </div>
 
 
@@ -113,17 +106,17 @@
         console.log('throwBtn', throwBtn);
         console.log('stopBtn', stopBtn);
 
-        throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 hide-btn')
-        pauseBtn.setAttribute('class', ' btn btn-warning class-btn me-5 hide-btn');
-        stopBtn.setAttribute('class', 'btn btn-danger class-btn me-5 hide-btn');
+        throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 hide-btn btn-lg shadow-sm')
+        pauseBtn.setAttribute('class', ' btn btn-warning class-btn me-5 hide-btn btn-lg shadow-sm');
+        stopBtn.setAttribute('class', 'btn btn-danger class-btn me-5 hide-btn btn-lg shadow-sm');
 
 
         startBtn.addEventListener('click', function name(params) {
             console.log('startBtn click ok');
-            this.setAttribute('class', 'btn btn-primary class-btn me-5 hide-btn');
-            throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 show-btn');
-            pauseBtn.setAttribute('class', ' btn btn-warning class-btn me-5 show-btn');
-            stopBtn.setAttribute('class', 'btn btn-danger class-btn me-5 show-btn');
+            this.setAttribute('class', 'btn btn btn-primary class-btn me-5 hide-btn btn-lg shadow-sm');
+            throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 show-btn btn-lg shadow-sm');
+            pauseBtn.setAttribute('class', ' btn btn-warning class-btn me-5 show-btn btn-lg shadow-sm');
+            stopBtn.setAttribute('class', 'btn btn-danger class-btn me-5 show-btn btn-lg shadow-sm');
 
             myInterval = setInterval(() => {
                 startTime--;
@@ -170,14 +163,18 @@
             timerSpan.setAttribute('class', 'text-info display-3');
             console.log('starttime', startTime);
 
-
-            throwBtn.setAttribute('class', ' btn btn-success class-btn me-5 hide-btn');
-            startBtn.setAttribute('class', 'btn btn-primary class-btn me-5 show-btn');
+            this.setAttribute('class', 'btn btn btn-primary class-btn me-5 hide-btn btn-lg shadow-sm');
+            throwBtn.setAttribute('class', ' btn btn-success class-btn me-5 hide-btn btn-lg shadow-sm');
+            startBtn.setAttribute('class', 'btn btn-primary class-btn me-5 show-btn btn-lg shadow-sm');
 
         });
 
         stopBtn.addEventListener('click', function name(params) {
             console.log('stopBtn click ok');
+            this.setAttribute('class', 'btn btn-danger class-btn me-5 hide-btn btn-lg shadow-sm');
+            throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 hide-btn btn-lg shadow-sm');
+            pauseBtn.setAttribute('class', ' btn btn-warning class-btn me-5 hide-btn btn-lg shadow-sm');
+            startBtn.setAttribute('class', 'btn btn-lg btn-primary class-btn me-5 show-btn btn-lg shadow-sm');
 
             clearInterval(myInterval);
             startTime = 20;
@@ -188,9 +185,6 @@
             console.log('starttime', startTime);
             console.log('score', score);
 
-
-            throwBtn.setAttribute('class', ' btn btn-success class-btn me-5 hide-btn');
-            startBtn.setAttribute('class', 'btn btn-primary class-btn me-5 show-btn');
 
         });
 
