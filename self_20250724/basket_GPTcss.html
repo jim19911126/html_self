@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>投籃大賽</title>
   <!-- 載入 Bootstrap 5 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css" integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRzV/...==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+    integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRzV/...==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
   <style>
     body {
       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -83,12 +85,17 @@
 
     <!-- 控制按鈕 -->
     <div class="row justify-content-center mt-4 controls">
-      <div class="col-auto">
-        <button id="startBtn" class="btn btn-primary">開始</button>
-        <button id="throwBtn" class="btn btn-success d-none">投籃</button>
+      <div class="col-12 text-center">
+        <button id="startBtn" class="btn btn-primary btn-lg px-5" style="min-width: 200px;">開始</button>
       </div>
       <div class="col-auto">
-        <button id="stopBtn" class="btn btn-danger">停止</button>
+        <button id="pauseBtn" class="btn btn-warning d-none">暫停</button>
+      </div>
+      <div class="col-auto">
+        <button id="throwBtn" class="btn btn-success d-none btn-lg" style="min-width: 150px;">投籃</button>
+      </div>
+      <div class="col-auto">
+        <button id="stopBtn" class="btn btn-danger d-none">停止</button>
       </div>
     </div>
   </div>
@@ -100,6 +107,7 @@
     const startBtn = document.getElementById("startBtn");
     const throwBtn = document.getElementById("throwBtn");
     const stopBtn = document.getElementById("stopBtn");
+    const pauseBtn=document.getElementById("pauseBtn");
     const scoreSpan = document.getElementById("score");
     const highestScoreSpan = document.getElementById("highestScore");
     const timerSpan = document.getElementById("timer");
@@ -114,6 +122,8 @@
     startBtn.addEventListener('click', () => {
       startBtn.classList.add('d-none');
       throwBtn.classList.remove('d-none');
+      pauseBtn.classList.remove('d-none');
+      stopBtn.classList.remove('d-none');
       score = 0;
       scoreSpan.textContent = score;
       startTime = 20;
@@ -141,12 +151,12 @@
 
     stopBtn.addEventListener('click', () => {
       clearInterval(myInterval);
-      score = 0;
-      scoreSpan.textContent = score;
       timerSpan.textContent = startTime;
       timerSpan.className = 'display-3 text-info';
       throwBtn.classList.add('d-none');
       startBtn.classList.remove('d-none');
+      pauseBtn.classList.add('d-none');
+      stopBtn.classList.add('d-none');
     });
   </script>
 </body>
