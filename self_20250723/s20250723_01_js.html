@@ -100,7 +100,7 @@
         console.log('highestScore',highestScore);
         console.log('getHighestSocre typeof',typeof (getHighestScore));
         
-        
+        highestScoreSpan.innerHTML = highestScore;
 
         let myInterval = null;
 
@@ -150,6 +150,8 @@
                 highestScore = score;
                 localStorage.setItem('highestScore',highestScore);
                 highestScoreSpan.innerHTML = highestScore;
+                console.log('highestScore', 'test');
+                
             }
 
         });
@@ -160,9 +162,11 @@
             scoreSpan.innerHTML=score;
 
             clearInterval(myInterval);
-            startTime=
+            // startTime=
             timerSpan.innerHTML=startTime;
-            timerSpan.setAttribute('class','text-info display-3')
+            timerSpan.setAttribute('class','text-info display-3');
+            console.log('starttime',startTime);
+            
 
             throwBtn.setAttribute('class',' btn btn-success class-btn me-5 hide-btn');
             startBtn.setAttribute('class', 'btn btn-primary class-btn me-5 show-btn');
