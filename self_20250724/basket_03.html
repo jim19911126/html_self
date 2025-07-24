@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 載入bs5 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', 'Microsoft JhengHei', sans-serif;
+        }
+
+        .fixed-img {
+            width: 100%;
+            max-width: 120px;
+            /* 手機上最大 120px */
+        }
+
+        .hide-btn {
+            display: none;
+        }
+
+        .show-btn {
+            display: inline;
+        }
+
+        .responsive-img {
+            width: 100%;
+            max-width: 120px;
+            /* 預設（手機） */
+        }
+
+        @media (min-width: 576px) {
+            .responsive-img {
+                max-width: 180px;
+                /* 平板 */
+            }
+        }
+
+        @media (min-width: 992px) {
+            .responsive-img {
+                max-width: 240px;
+                /* 桌機 */
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row text-center align-items-center bg-primary text-white rounded shadow-sm py-3 mb-3">
+            <div class="col-12 col-md-3">剩下<span class="text-info display-3" id="timer"></span>秒</div>
+            <div class="col-12 col-md-6 my-2 my-md-0 h2">投籃大賽</div>
+            <div class="col-12 col-md-3">最高分紀錄：<span id="highestScore"></span></div>
+        </div>
+    </div>
+    <div class="container px-0">
+        <hr>
+    </div>
+    <div class="container mt-3">
+        <div class="row justify-content-center align-items-center text-center bg-light rounded shadow-sm py-3 mb-3">
+            <!-- 左側玩家圖 -->
+            <div class="col-12 col-sm-4 col-md-3 mb-3 mb-sm-0">
+                <img src="./image/player.png" class="img-fluid fixed-img mx-auto d-block" style="max-width: 120px;" alt="player">
+            </div>
+
+            <!-- 中間分數 -->
+            <div class="col-12 col-sm-4 col-md-auto mb-3 mb-sm-0">
+                <div class="fs-5 mb-1">目前分數</div>
+                <div class="h4 mb-0"><span id="score"></span></div>
+            </div>
+
+            <!-- 右側籃框圖 -->
+            <div class="col-12 col-sm-4 col-md-3">
+                <img src="./image/basket.png" class="img-fluid fixed-img mx-auto d-block" style="max-width: 120px;" alt="basket">
+            </div>
+        </div>
+    </div>
+
+    <!-- 按鈕區 -->
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center my-3">
+            <button id="startBtn" class="btn btn-primary btn-lg w-100 w-md-auto mx-md-2 mb-2 mb-md-0">開始</button>
+            <button id="pauseBtn"
+                class="btn btn-warning btn-lg w-100 w-md-auto mx-md-2 mb-2 mb-md-0 hide-btn">暫停</button>
+            <button id="throwBtn"
+                class="btn btn-success btn-lg w-100 w-md-auto mx-md-2 mb-2 mb-md-0 hide-btn">投籃</button>
+            <button id="stopBtn" class="btn btn-danger btn-lg w-100 w-md-auto mx-md-2 mb-2 mb-md-0 hide-btn">停止</button>
+        </div>
+    </div>
+
+    <!-- 載入bs5 js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"
+        integrity="sha512-Tc0i+vRogmX4NN7tuLbQfBxa8JkfUSAxSFVzmU31nVdHyiHElPPy2cWfFacmCJKw0VqovrzKhdd2TSTMdAxp2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- 載入jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const startBtn = document.getElementById("startBtn");
+        const throwBtn = document.getElementById("throwBtn");
+        const pauseBtn = document.getElementById("pauseBtn");
+        const stopBtn = document.getElementById("stopBtn");
+        const scoreSpan = document.getElementById("score");
+        const highestScoreSpan = document.getElementById("highestScore");
+        const timerSpan = document.getElementById("timer");
+        let score = 0;
+        let highestScore = 0;
+        let startTime = 20;
+        let bonusTime = 5;
+
+        // localStorage.setItem('highestScore',50);
+        let getHighestScore = Number(localStorage.getItem('highestScore'));
+        if (getHighestScore) {
+            highestScore = getHighestScore;
+
+        }
+        console.log('highestScore', highestScore);
+        console.log('getHighestSocre typeof', typeof (getHighestScore));
+
+        highestScoreSpan.innerHTML = highestScore;
+
+        let myInterval = null;
+
+
+        console.log('startBtn', startBtn);
+        console.log('throwBtn', throwBtn);
+        console.log('stopBtn', stopBtn);
+
+        throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 hide-btn btn-lg shadow-sm')
+        pauseBtn.setAttribute('class', ' btn btn-warning class-btn me-5 hide-btn btn-lg shadow-sm');
+        stopBtn.setAttribute('class', 'btn btn-danger class-btn me-5 hide-btn btn-lg shadow-sm');
+
+
+        startBtn.addEventListener('click', function name(params) {
+            console.log('startBtn click ok');
+            this.setAttribute('class', 'btn btn btn-primary class-btn me-5 hide-btn btn-lg shadow-sm');
+            throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 show-btn btn-lg shadow-sm');
+            pauseBtn.setAttribute('class', ' btn btn-warning class-btn me-5 show-btn btn-lg shadow-sm');
+            stopBtn.setAttribute('class', 'btn btn-danger class-btn me-5 show-btn btn-lg shadow-sm');
+
+            myInterval = setInterval(() => {
+                startTime--;
+                timerSpan.innerHTML = startTime;
+                if (startTime < 1) {
+                    clearInterval(myInterval);
+                }
+                if (startTime < bonusTime) {
+                    timerSpan.setAttribute('class', 'text-danger display-3')
+                }
+
+            }, 1000);
+
+        });
+        throwBtn.addEventListener('click', function name(params) {
+            console.log('throwBtn click ok');
+
+            if (startTime < 1) {
+                return false;
+
+            }
+
+            if (startTime > bonusTime) {
+                score += 2;
+            } else {
+                score += 3;
+
+            }
+            scoreSpan.innerHTML = score;
+
+            if (score > highestScore) {
+                highestScore = score;
+                localStorage.setItem('highestScore', highestScore);
+                highestScoreSpan.innerHTML = highestScore;
+                console.log('highestScore', 'test');
+
+            }
+
+        });
+        pauseBtn.addEventListener('click', function name(params) {
+            console.log('pauseBtn click ok');
+
+            clearInterval(myInterval);
+            timerSpan.setAttribute('class', 'text-info display-3');
+            console.log('starttime', startTime);
+
+            this.setAttribute('class', 'btn btn btn-primary class-btn me-5 hide-btn btn-lg shadow-sm');
+            throwBtn.setAttribute('class', ' btn btn-success class-btn me-5 hide-btn btn-lg shadow-sm');
+            startBtn.setAttribute('class', 'btn btn-primary class-btn me-5 show-btn btn-lg shadow-sm');
+
+        });
+
+        stopBtn.addEventListener('click', function name(params) {
+            console.log('stopBtn click ok');
+            this.setAttribute('class', 'btn btn-danger class-btn me-5 hide-btn btn-lg shadow-sm');
+            throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 hide-btn btn-lg shadow-sm');
+            pauseBtn.setAttribute('class', ' btn btn-warning class-btn me-5 hide-btn btn-lg shadow-sm');
+            startBtn.setAttribute('class', 'btn btn-lg btn-primary class-btn me-5 show-btn btn-lg shadow-sm');
+
+            clearInterval(myInterval);
+            startTime = 20;
+            timerSpan.innerHTML = startTime;
+            timerSpan.setAttribute('class', 'text-info display-3');
+            score = 0;
+            scoreSpan.innerHTML = score;
+            console.log('starttime', startTime);
+            console.log('score', score);
+
+
+        });
+
+        $(document).ready(function name(params) {
+
+        });
+
+    </script>
+</body>
+
+</html>
