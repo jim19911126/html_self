@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>投籃大賽</title>
+  <!-- 載入 Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css" integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRzV/...==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .scoreboard {
+      background-color: #343a40;
+      color: #fff;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .scoreboard .display-3 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .game-area {
+      background: #fff;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .game-area img {
+      max-width: 100px;
+    }
+
+    .controls .btn {
+      min-width: 120px;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- 計時與得分區 -->
+    <div class="row scoreboard text-center align-items-center">
+      <div class="col-md-4 mb-2 mb-md-0">
+        <div>剩餘時間</div>
+        <div id="timer" class="display-3 text-info">20</div>
+      </div>
+      <div class="col-md-4 mb-2 mb-md-0">
+        <h1 class="mb-0">投籃大賽</h1>
+      </div>
+      <div class="col-md-4">
+        <div>最高分記錄</div>
+        <div id="highestScore" class="display-3">0</div>
+      </div>
+    </div>
+
+    <!-- 遊戲畫面 -->
+    <div class="row justify-content-center game-area text-center">
+      <div class="col-3">
+        <img src="./image/player.png" alt="player" class="img-fluid" />
+      </div>
+      <div class="col-4 my-auto">
+        <div>目前分數</div>
+        <div id="score" class="display-3 text-primary">0</div>
+      </div>
+      <div class="col-3">
+        <img src="./image/basket.png" alt="basket" class="img-fluid" />
+      </div>
+    </div>
+
+    <!-- 控制按鈕 -->
+    <div class="row justify-content-center mt-4 controls">
+      <div class="col-auto">
+        <button id="startBtn" class="btn btn-primary">開始</button>
+        <button id="throwBtn" class="btn btn-success d-none">投籃</button>
+      </div>
+      <div class="col-auto">
+        <button id="stopBtn" class="btn btn-danger">停止</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 載入 Bootstrap 與 jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const startBtn = document.getElementById("startBtn");
+    const throwBtn = document.getElementById("throwBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const scoreSpan = document.getElementById("score");
+    const highestScoreSpan = document.getElementById("highestScore");
+    const timerSpan = document.getElementById("timer");
+    let score = 0;
+    let highestScore = Number(localStorage.getItem('highestScore')) || 0;
+    let startTime = 20;
+    const bonusTime = 5;
+    let myInterval = null;
+
+    highestScoreSpan.textContent = highestScore;
+
+    startBtn.addEventListener('click', () => {
+      startBtn.classList.add('d-none');
+      throwBtn.classList.remove('d-none');
+      score = 0;
+      scoreSpan.textContent = score;
+      startTime = 20;
+      timerSpan.textContent = startTime;
+      timerSpan.className = 'display-3 text-info';
+
+      myInterval = setInterval(() => {
+        startTime--;
+        timerSpan.textContent = startTime;
+        if (startTime <= 0) clearInterval(myInterval);
+        if (startTime <= bonusTime) timerSpan.className = 'display-3 text-danger';
+      }, 1000);
+    });
+
+    throwBtn.addEventListener('click', () => {
+      if (startTime <= 0) return;
+      score += (startTime > bonusTime ? 2 : 3);
+      scoreSpan.textContent = score;
+      if (score > highestScore) {
+        highestScore = score;
+        localStorage.setItem('highestScore', highestScore);
+        highestScoreSpan.textContent = highestScore;
+      }
+    });
+
+    stopBtn.addEventListener('click', () => {
+      clearInterval(myInterval);
+      score = 0;
+      scoreSpan.textContent = score;
+      timerSpan.textContent = startTime;
+      timerSpan.className = 'display-3 text-info';
+      throwBtn.classList.add('d-none');
+      startBtn.classList.remove('d-none');
+    });
+  </script>
+</body>
+
+</html>
