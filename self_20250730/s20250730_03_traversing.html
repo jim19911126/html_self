@@ -10,12 +10,33 @@
         integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        .box{
+        .box {
             width: 80%;
-            height: 20px;
+            height: 100px;
+            margin: auto;
+            margin-bottom: 50px;
             border: solid black;
         }
 
+        button {
+            width: 50px;
+            height: 20px;
+        }
+
+        .box.active {
+            background-color: lightblue;
+            /* 換成你想要的顏色 */
+        }
+
+        .box.active2 {
+            background-color: lightgreen;
+            /* 換成你想要的顏色 */
+        }
+
+        .box.active3 {
+            background-color: lightcoral;
+            /* 換成你想要的顏色 */
+        }
     </style>
 
 </head>
@@ -23,17 +44,17 @@
 <body>
     <div>
         <div class="box" id="box1">
-            <button id="btn1">
+            <button id="btn1" class="btn btn-primary">
 
             </button>
         </div>
         <div class="box" id="box2">
-            <button id="btn1">
+            <button id="btn2" class="btn btn-success">
 
             </button>
         </div>
-        <div class="box" id="box2">
-            <button id="btn1">
+        <div class="box" id="box3">
+            <button id="btn3" class="btn btn-danger">
 
             </button>
         </div>
@@ -52,16 +73,42 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(document).ready(function () {
-            const mySpan = $("#mySpan");
-            const mySpanParent = mySpan.parent();
-            const mySpanParent2 = mySpan.parent().parent();
+            const btn1 = $("#btn1");
+            const btn1Parent = btn1.parent();
+            const btn2 = $("#btn2");
+            const btn2Parent = btn2.parent();
+            const btn3 = $("#btn3");
+            const btn3Parent = btn3.parent();
 
-            mySpan.click(function name(e) {
+            btn1.click(function name(e) {
                 e.preventDefault();
-                console.log('mySpan click ok');
+                console.log('btn1 click ok');
                 console.log('this', this);
 
                 let thisParent = $(this).parent();
+                thisParent.addClass('active');
+                console.log('thisParent', thisParent);
+
+
+            })
+            btn2.click(function name(e) {
+                e.preventDefault();
+                console.log('btn2 click ok');
+                console.log('this', this);
+
+                let thisParent = $(this).parent();
+                thisParent.addClass('active2');
+                console.log('thisParent', thisParent);
+
+
+            })
+            btn3.click(function name(e) {
+                e.preventDefault();
+                console.log('btn3 click ok');
+                console.log('this', this);
+
+                let thisParent = $(this).parent();
+                thisParent.addClass('active3');
                 console.log('thisParent', thisParent);
 
 
