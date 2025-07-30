@@ -10,24 +10,34 @@
         integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        .box{
+            width: 80%;
+            height: 20px;
+            border: solid black;
+        }
+
     </style>
 
 </head>
 
 <body>
-<div>
-    <il>
-        <li id="li1">
-            <span id="mySpan">
-                mySpan
-            </span>
+    <div>
+        <div class="box" id="box1">
+            <button id="btn1">
 
-        </li>
-        <li id="li2">
-            <b></b>
-        </li>
-    </il>
-</div>
+            </button>
+        </div>
+        <div class="box" id="box2">
+            <button id="btn1">
+
+            </button>
+        </div>
+        <div class="box" id="box2">
+            <button id="btn1">
+
+            </button>
+        </div>
+    </div>
 
 
 
@@ -42,7 +52,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(document).ready(function () {
-            const mySpan=$("#mySpan");
+            const mySpan = $("#mySpan");
             const mySpanParent = mySpan.parent();
             const mySpanParent2 = mySpan.parent().parent();
 
@@ -50,13 +60,13 @@
                 e.preventDefault();
                 console.log('mySpan click ok');
                 console.log('this', this);
-                
+
                 let thisParent = $(this).parent();
                 console.log('thisParent', thisParent);
-                
-                
+
+
             })
-            
+
 
 
         });
