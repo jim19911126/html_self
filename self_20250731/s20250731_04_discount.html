@@ -11,54 +11,87 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .container {
-            display: inline-flex;
+            display: flex;
             justify-content: center;
-            justify-items: auto;
             gap: 10px;
+            flex-wrap: wrap;
             margin-top: 30px;
         }
-        .box{
+
+        .box {
             box-sizing: border-box;
-            width: 100px;
-            height: 150px;
+            width: 200px;
+            height: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: #f8f9fa;
+            background-color: #ffffff;
             border: 1px solid #ccc;
-            align-items: center;
+            border-radius: 8px;
+            padding: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        img{
-            height: 300px;
-            width: 300px;
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .msg-box {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffe9e9;
+            color: #b22222;
+            font-size: 1.2rem;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-weight: bold;
         }
     </style>
 
 </head>
 
 <body>
-<div class="container">
-    <div class="box">
-        <div class="col">
-            <img src="./image/tfm.jpg" alt="">
+    <div class="container">
+        <div class="box">
+            <div class="col">
+                <img src="./image/tfm.jpg" alt="">
+            </div>
+            <div class="col price-tfm discounted-price" data-price="299">350</div>
         </div>
-        <div class="col">350</div>
-    </div>
-    <div class="box">
-        <div class="col">
-            <img src="./image/btw.jpg" alt="">
+        <div class="box">
+            <div class="col">
+                <img src="./image/btw.jpg" alt="">
+            </div>
+            <div class="col price-btw discounted-price" data-price="299">350</div>
         </div>
-        <div class="col">350</div>
-    </div>
-    <div class="box">
-        <div class="col">
-            <img src="./image/mayhem.jpg" alt="">
+        <div class="box">
+            <div class="col">
+                <img src="./image/mayhem.jpg" alt="">
+            </div>
+            <div class="col price-mayhem discounted-price" data-price="350">400</div>
         </div>
-        <div class="col">400</div>
     </div>
-</div>
+    <div class="msg-box">
+        特惠活動！按下上方價格解鎖驚喜特惠價
+    </div>
 
 
 
@@ -74,23 +107,33 @@
     <script>
         $(document).ready(function () {
 
-            const myDiv = $("#myDiv");
-            console.log('myDiv', myDiv);
+            // 以下為各自設定 class 的方式
+            // const tfmPrice = $('.price-tfm');
+            // const btwPrice  = $('.price-btw');
+            // const mayhemPrice  = $('.price-mayhem');
 
-            let contentAppend = `
-                    <p>Taylor Swift</p>
-        
-            `;
+            // tfmPrice.on("click", function () {
+            //     $(this).html("現在只要：<span style='color:red;'>299</span>")
+                
+            // });
 
-            let contentPrepend = `
-            <p>The Eras Tour</p>
-            `;
+            const discountedPrice = $(".discounted-price");
+            console.log('discountedPrice',discountedPrice);
 
-            myDiv.prepend(contentPrepend);
-            myDiv.append(contentAppend);
+            discountedPrice.click(function name(e) {
+                console.log('this',this);
 
-            $(target).insertAfter(selector);
-            $(target).insertBefore(selector);
+                let getPrice = $(this).attr('data-price');
+                console.log('getPrice',getPrice);
+
+                $(this).html(`現在只要：<span style='color:red;'>${getPrice}</span>`);
+                
+                
+                
+            })
+            
+
+
 
 
         });
