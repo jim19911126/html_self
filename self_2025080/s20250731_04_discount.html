@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 載入bs5 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+
+        p{
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .box {
+            box-sizing: border-box;
+            width: 200px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .msg-box {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffe9e9;
+            color: #b22222;
+            font-size: 1.2rem;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+                <div class="box">
+            <div class="col">
+                <p>The Fame</p>
+                <img src="./image/tf.jpg" alt="">
+            </div>
+            <div class="col price-tfm discounted-price" data-price="299">350</div>
+        </div>
+        <div class="box">
+            <div class="col">
+                <p>The Fame Monster</p>
+                <img src="./image/tfm.jpg" alt="">
+            </div>
+            <div class="col price-tfm discounted-price" data-price="299">350</div>
+        </div>
+        <div class="box">
+            <div class="col">
+                <p>Born This Way</p>
+                <img src="./image/btw.jpg" alt="">
+            </div>
+            <div class="col price-btw discounted-price" data-price="299">350</div>
+        </div>
+                <div class="box">
+            <div class="col">
+                <p>ARTPOP</p>
+                <img src="./image/ap.jpg" alt="">
+            </div>
+            <div class="col price-tfm discounted-price" data-price="299">350</div>
+        </div>
+                <div class="box">
+            <div class="col">
+                <p>Joanne</p>
+                <img src="./image/jo.jpg" alt="">
+            </div>
+            <div class="col price-tfm discounted-price" data-price="299">350</div>
+        </div>
+                <div class="box">
+            <div class="col">
+                <p>Chromatica</p>
+                <img src="./image/chro.jpg" alt="">
+            </div>
+            <div class="col price-tfm discounted-price" data-price="299">350</div>
+        </div>
+        <div class="box">
+            <div class="col">
+                <p>MAYHEM</p>
+                <img src="./image/mayhem.jpg" alt="">
+            </div>
+            <div class="col price-mayhem discounted-price" data-price="350">400</div>
+        </div>
+    </div>
+    <div class="msg-box">
+        歡慶巡演開始！按下上方價格解鎖驚喜特惠價
+    </div>
+
+
+
+    <!-- 載入bs5 js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"
+        integrity="sha512-Tc0i+vRogmX4NN7tuLbQfBxa8JkfUSAxSFVzmU31nVdHyiHElPPy2cWfFacmCJKw0VqovrzKhdd2TSTMdAxp2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- 載入jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+
+            // 以下為各自設定 class 的方式
+            // const tfmPrice = $('.price-tfm');
+            // const btwPrice  = $('.price-btw');
+            // const mayhemPrice  = $('.price-mayhem');
+
+            // tfmPrice.on("click", function () {
+            //     $(this).html("現在只要：<span style='color:red;'>299</span>")
+                
+            // });
+
+            const discountedPrice = $(".discounted-price");
+            console.log('discountedPrice',discountedPrice);
+
+            discountedPrice.click(function name(e) {
+                console.log('this',this);
+
+                let getPrice = $(this).attr('data-price');
+                console.log('getPrice',getPrice);
+
+                $(this).html(`現在只要：<span style='color:red;'>${getPrice}</span>`);
+                
+                
+                
+            })
+            
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>
