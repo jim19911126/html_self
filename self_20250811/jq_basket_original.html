@@ -114,25 +114,15 @@
         console.log('stopBtn', stopBtn);
 
         throwBtn.attr('class', 'btn btn-success class-btn me-5 hide-btn');
-        pauseBtn.attr('class', ' btn btn-warning class-btn me-5 hide-btn');
+        pauseBtn.attr('class', 'btn btn-warning class-btn me-5 hide-btn');
         stopBtn.attr('class', 'btn btn-danger class-btn me-5 hide-btn');
 
         startBtn.click(function name(params) {
             $(this).attr('class', 'btn btn-primary class-btn me-5 hide-btn');
-            throwBtn.attr('class', 'btn btn-success class-btn me-5 hide-btn');
-            pauseBtn.attr('class', ' btn btn-warning class-btn me-5 hide-btn');
-            stopBtn.attr('class', 'btn btn-danger class-btn me-5 hide-btn');
-        })
-
-
-        // startBtn.addEventListener('click', function name(params) {
-        //     console.log('startBtn click ok');
-        //     this.setAttribute('class', 'btn btn-primary class-btn me-5 hide-btn');
-        //     throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 show-btn');
-        //     pauseBtn.setAttribute('class', ' btn btn-warning class-btn me-5 show-btn');
-        //     stopBtn.setAttribute('class', 'btn btn-danger class-btn me-5 show-btn');
-
-            myInterval = setInterval(() => {
+            throwBtn.attr('class', 'btn btn-success class-btn me-5 show-btn');
+            pauseBtn.attr('class', 'btn btn-warning class-btn me-5 show-btn');
+            stopBtn.attr('class', 'btn btn-danger class-btn me-5 show-btn');
+                    myInterval = setInterval(() => {
                 startTime--;
                 timerSpan.html(startTime);
                 if (startTime < 1) {
@@ -143,6 +133,17 @@
                 }
 
             }, 1000);
+        })
+
+
+        // startBtn.addEventListener('click', function name(params) {
+        //     console.log('startBtn click ok');
+        //     this.setAttribute('class', 'btn btn-primary class-btn me-5 hide-btn');
+        //     throwBtn.setAttribute('class', 'btn btn-success class-btn me-5 show-btn');
+        //     pauseBtn.setAttribute('class', ' btn btn-warning class-btn me-5 show-btn');
+        //     stopBtn.setAttribute('class', 'btn btn-danger class-btn me-5 show-btn');
+
+
 
         throwBtn.click(function name(params) {
             console.log('throwBtn click ok');
@@ -163,7 +164,7 @@
             if (score > highestScore) {
                 highestScore = score;
                 localStorage.setItem('highestScore', highestScore);
-                highestScoreSpan.html(highestScoreSpan);
+                highestScoreSpan.html(highestScore);
                 console.log('highestScore', 'test');
 
             }
@@ -177,7 +178,7 @@
             console.log('starttime', startTime);
 
 
-            throwBtn.attr('class', ' btn btn-success class-btn me-5 hide-btn');
+            throwBtn.attr('class', 'btn btn-success class-btn me-5 hide-btn');
             startBtn.attr('class', 'btn btn-primary class-btn me-5 show-btn');
 
         });
@@ -195,7 +196,7 @@
             console.log('score', score);
 
 
-            throwBtn.attr('class', ' btn btn-success class-btn me-5 hide-btn');
+            throwBtn.attr('class', 'btn btn-success class-btn me-5 hide-btn');
             startBtn.attr('class', 'btn btn-primary class-btn me-5 show-btn');
 
         });
