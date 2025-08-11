@@ -100,6 +100,63 @@
         @media (max-width: 576px){
             .controls .btn{ width:48%; min-width:auto; }
         }
+
+        /* ---- RWD 基礎：字體與尺寸會根據螢幕縮放 ---- */
+        #timer{ font-size: clamp(18px, 6vw, 28px); }
+        #score{ font-size: clamp(36px, 12vw, 72px); }
+        #highestScore{ font-size: clamp(14px, 4.2vw, 18px); }
+
+        /* 標題（中間那欄）在各尺寸置中 + 自適應字級 */
+        .game-header .col-8{
+          display:flex; align-items:center; justify-content:center;
+          font-weight:800; letter-spacing:.4px;
+          font-size: clamp(18px, 4.5vw, 28px);
+        }
+
+        /* 讓三欄在手機時垂直堆疊、更好讀 */
+        @media (max-width: 768px){
+          .game-header .col-2,
+          .game-header .col-8{
+            flex: 0 0 100%;
+            max-width: 100%;
+            text-align: center;
+            margin-top: 8px;
+          }
+        }
+
+        /* 分數區：圖片縮小、上下堆疊 */
+        .game-stats img{ max-width: 140px; }
+        @media (max-width: 992px){ .game-stats img{ max-width: 120px; } }
+        @media (max-width: 768px){
+          .game-stats .col-2,
+          .game-stats .col-8{
+            flex: 0 0 100%;
+            max-width: 100%;
+            text-align:center;
+            margin: 6px 0;
+          }
+        }
+
+        /* 控制區按鈕：可換行、兩欄 → 超小螢幕單欄 */
+        .controls{ flex-wrap: wrap; gap: .75rem !important; }
+        .controls .btn{
+          flex: 1 1 calc(50% - .75rem);
+          min-width: calc(50% - .75rem);
+          padding: .9rem 1.25rem; /* 提升可點區域 */
+        }
+        @media (max-width: 400px){
+          .controls .btn{
+            flex: 1 1 100%;
+            min-width: 100%;
+          }
+        }
+
+        /* 細節：讓 stats/controls 卡片在手機更緊湊 */
+        @media (max-width: 576px){
+          .game-header{ padding: 10px 12px; }
+          .game-stats{ padding: 18px 12px; }
+          .controls{ padding: 12px; }
+        }
     </style>
 
 </head>
@@ -108,7 +165,7 @@
     <div class="container">
         <div class="row game-header">
             <div class="col-2 text-center">
-                剩下<span class="text info display-3" id="timer"> </span>秒
+                剩下 <span class="text-info display-3" id="timer"> </span> 秒
             </div>
             <div class="col-8 text-center">
                 投籃大賽
@@ -168,6 +225,9 @@
         let highestScore = 0;
         let startTime = 20;
         let bonusTime = 5;
+
+        timerSpan.html(startTime);
+        scoreSpan.html(score);
 
         // localStorage.setItem('highestScore',50);
         let getHighestScore = Number(localStorage.getItem('highestScore'));
