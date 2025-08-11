@@ -83,13 +83,13 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        const startBtn = document.getElementById("startBtn");
-        const throwBtn = document.getElementById("throwBtn");
-        const pauseBtn = document.getElementById("pauseBtn");
-        const stopBtn = document.getElementById("stopBtn");
-        const scoreSpan = document.getElementById("score");
-        const highestScoreSpan = document.getElementById("highestScore");
-        const timerSpan = document.getElementById("timer");
+        const startBtn = $("#startBtn");
+        const throwBtn = $("#throwBtn");
+        const pauseBtn = $("#pauseBtn");
+        const stopBtn = $("#stopBtn");
+        const scoreSpan = $("#score");
+        const highestScoreSpan = $("#highestScore");
+        const timerSpan = $("#timer");
         let score = 0;
         let highestScore = 0;
         let startTime = 20;
@@ -104,7 +104,7 @@
         console.log('highestScore', highestScore);
         console.log('getHighestSocre typeof', typeof (getHighestScore));
 
-        highestScoreSpan.innerHTML = highestScore;
+        $('#highestScoreSpan').html(highestScore);
 
         let myInterval = null;
 
