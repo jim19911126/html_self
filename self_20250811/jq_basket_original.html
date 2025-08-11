@@ -113,15 +113,15 @@
         console.log('throwBtn', throwBtn);
         console.log('stopBtn', stopBtn);
 
-        $('#throwBtn').attr('class', 'btn btn-success class-btn me-5 hide-btn');
-        $('#pauseBtn').attr('class', ' btn btn-warning class-btn me-5 hide-btn');
-        $('#stopBtn').attr('class', 'btn btn-danger class-btn me-5 hide-btn');
+        throwBtn.attr('class', 'btn btn-success class-btn me-5 hide-btn');
+        pauseBtn.attr('class', ' btn btn-warning class-btn me-5 hide-btn');
+        stopBtn.attr('class', 'btn btn-danger class-btn me-5 hide-btn');
 
-        $('#startBtn').click(function name(params) {
+        startBtn.click(function name(params) {
             $(this).attr('class', 'btn btn-primary class-btn me-5 hide-btn');
-            $('#throwBtn').attr('class', 'btn btn-success class-btn me-5 hide-btn');
-            $('#pauseBtn').attr('class', ' btn btn-warning class-btn me-5 hide-btn');
-            $('#stopBtn').attr('class', 'btn btn-danger class-btn me-5 hide-btn');
+            throwBtn.attr('class', 'btn btn-success class-btn me-5 hide-btn');
+            pauseBtn.attr('class', ' btn btn-warning class-btn me-5 hide-btn');
+            stopBtn.attr('class', 'btn btn-danger class-btn me-5 hide-btn');
         })
 
 
@@ -169,38 +169,34 @@
             }
 
         });
-        pauseBtn.addEventListener('click', function name(params) {
+        pauseBtn.click(function name(params) {
             console.log('pauseBtn click ok');
 
             clearInterval(myInterval);
-            timerSpan.setAttribute('class', 'text-info display-3');
+            timerSpan.attr('class', 'text-info display-3');
             console.log('starttime', startTime);
 
 
-            throwBtn.setAttribute('class', ' btn btn-success class-btn me-5 hide-btn');
-            startBtn.setAttribute('class', 'btn btn-primary class-btn me-5 show-btn');
+            throwBtn.attr('class', ' btn btn-success class-btn me-5 hide-btn');
+            startBtn.attr('class', 'btn btn-primary class-btn me-5 show-btn');
 
         });
 
-        stopBtn.addEventListener('click', function name(params) {
+        stopBtn.click(function name(params) {
             console.log('stopBtn click ok');
 
             clearInterval(myInterval);
             startTime = 20;
-            timerSpan.innerHTML = startTime;
-            timerSpan.setAttribute('class', 'text-info display-3');
+            timerSpan.html(startTime);
+            timerSpan.attr('class', 'text-info display-3');
             score = 0;
-            scoreSpan.innerHTML = score;
+            scoreSpan.html(score);
             console.log('starttime', startTime);
             console.log('score', score);
 
 
-            throwBtn.setAttribute('class', ' btn btn-success class-btn me-5 hide-btn');
-            startBtn.setAttribute('class', 'btn btn-primary class-btn me-5 show-btn');
-
-        });
-
-        $(document).ready(function name(params) {
+            throwBtn.attr('class', ' btn btn-success class-btn me-5 hide-btn');
+            startBtn.attr('class', 'btn btn-primary class-btn me-5 show-btn');
 
         });
 
