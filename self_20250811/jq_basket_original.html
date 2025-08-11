@@ -72,7 +72,7 @@
         /* 圖片優化 */
         img{ width:100%; height:auto; object-fit:contain; filter: drop-shadow(0 4px 14px rgba(0,0,0,.08)); }
 
-        /* 控制區按鈕 */
+        /* 控制區按鈕 (Grid) */
         .controls{
             background: var(--card);
             border:1px solid var(--border);
@@ -80,9 +80,16 @@
             padding:16px;
             box-shadow: var(--shadow);
             margin-top:16px;
+            /* NEW: layout + centering */
+            display:grid !important;
+            grid-template-columns: 1fr;
+            gap: 12px !important;
+            max-width: 720px;
+            margin-left:auto; margin-right:auto;
         }
         .controls .btn{
-            padding:.75rem 1.25rem;
+            width:100%;
+            padding:.9rem 1.25rem;
             border-radius:12px;
             font-weight:800;
             letter-spacing:.3px;
@@ -97,9 +104,6 @@
         .show-btn{ display:inline-flex !important; align-items:center; justify-content:center; }
 
         /* 小尺寸調整 */
-        @media (max-width: 576px){
-            .controls .btn{ width:48%; min-width:auto; }
-        }
 
         /* ---- RWD 基礎：字體與尺寸會根據螢幕縮放 ---- */
         #timer{ font-size: clamp(18px, 6vw, 28px); }
@@ -137,19 +141,7 @@
           }
         }
 
-        /* 控制區按鈕：可換行、兩欄 → 超小螢幕單欄 */
-        .controls{ flex-wrap: wrap; gap: .75rem !important; }
-        .controls .btn{
-          flex: 1 1 calc(50% - .75rem);
-          min-width: calc(50% - .75rem);
-          padding: .9rem 1.25rem; /* 提升可點區域 */
-        }
-        @media (max-width: 400px){
-          .controls .btn{
-            flex: 1 1 100%;
-            min-width: 100%;
-          }
-        }
+
 
         /* 細節：讓 stats/controls 卡片在手機更緊湊 */
         @media (max-width: 576px){
@@ -194,7 +186,7 @@
     <hr>
     <div class="container">
         <div class="row">
-            <div class="d-flex justify-content-center align-items-center gap-3 controls">
+            <div class="controls">
                 <button id="startBtn" class="btn btn-primary">開始</button>
                 <button id="pauseBtn" class="btn btn-warning">暫停</button>
                 <button id="throwBtn" class="btn btn-success">投籃</button>
@@ -256,7 +248,8 @@
             throwBtn.attr('class', 'btn btn-success class-btn me-5 show-btn');
             pauseBtn.attr('class', 'btn btn-warning class-btn me-5 show-btn');
             stopBtn.attr('class', 'btn btn-danger class-btn me-5 show-btn');
-                    myInterval = setInterval(() => {
+            clearInterval(myInterval);
+            myInterval = setInterval(() => {
                 startTime--;
                 timerSpan.html(startTime);
                 if (startTime < 1) {
