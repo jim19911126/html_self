@@ -214,10 +214,18 @@
             // 2. 顯示表格資料的函數
             function displayData(dataToShow) {
                 let content = '';
-                $.each(dataToShow, function (key, value) {
+                // 先依照行政區排序
+                const sortedData = dataToShow.sort((a, b) => {
+                    if (a.dist < b.dist) return -1;
+                    if (a.dist > b.dist) return 1;
+                    return 0;
+                });
+                
+                // 使用新的索引重新編號
+                $.each(sortedData, function (index, value) {
                     content += `
                         <tr>
-                            <td>${key + 1}</td>
+                            <td>${index + 1}</td>
                             <td>${value.name}</td>
                             <td>${value.dist}</td>
                             <td>${value.addr}</td>
