@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 載入bs5 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            padding: 2rem 1rem;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .table {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .table thead {
+            background-color: #e9ecef;
+        }
+        
+        .table th {
+            padding: 1rem;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .table td {
+            padding: 0.75rem 1rem;
+            vertical-align: middle;
+        }
+        
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        /* 表格寬度配置 */
+        .table th,
+        .table td {
+            white-space: normal;  /* 允許文字換行 */
+            vertical-align: middle;
+        }
+        
+        /* 序號欄位 */
+        .table th:nth-child(1),
+        .table td:nth-child(1) {
+            width: 60px;
+            text-align: center;
+        }
+        
+        /* 診所名稱欄位 */
+        .table th:nth-child(2),
+        .table td:nth-child(2) {
+            width: 25%;
+        }
+        
+        /* 行政區欄位 */
+        .table th:nth-child(3),
+        .table td:nth-child(3) {
+            width: 100px;
+        }
+        
+        /* 地址欄位 */
+        .table th:nth-child(4),
+        .table td:nth-child(4) {
+            width: auto;  /* 自動填充剩餘空間 */
+        }
+        
+        /* 電話欄位 */
+        .table th:nth-child(5),
+        .table td:nth-child(5) {
+            width: 120px;
+        }
+        
+        /* 下拉選單容器 */
+        .district-filter {
+            margin-top: 0.5rem;
+            display: block;
+        }
+        
+        #dist {
+            width: 120px;
+            margin-left: 0;
+        }
+        
+        #dist {
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 0.25rem;
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        #dist:focus {
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+        }
+        
+        .source-info {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        code {
+            background: #e9ecef;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container mt-3">
+        <h2>臺北市精神科診所清單</h2>
+        <p>資料來源：台北市政府公開資料 <code>psy_clinics_20240819.csv
+</code></p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>序號</th>
+                    <th>診所名稱</th>
+                    <th>
+                        行政區
+                        <div class="district-filter">
+                            <select name="dist" id="dist">
+                                <option value="">請選擇</option>
+                            </select>
+                        </div>
+                    </th>
+                    <th>地址</th>
+                    <th>電話</th>
+                </tr>
+            </thead>
+            <tbody id="myTbody">
+                <!-- <tr>
+                    <td>1</td>
+                    <td>台北市</td>
+                    <td>24-34</td>
+                    <td>25-35</td>
+                    <td>26-36</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!-- 載入bs5 js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"
+        integrity="sha512-Tc0i+vRogmX4NN7tuLbQfBxa8JkfUSAxSFVzmU31nVdHyiHElPPy2cWfFacmCJKw0VqovrzKhdd2TSTMdAxp2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- 載入jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- get data -->
+
+    <!-- load js -->
+    <!--ajax json -->
+    <script src="./data/opendata.js"></script>
+
+    <script>
+         $(document).ready(function () {
+            // 1. 取得資料和元素
+            const data = openData;
+            const myTbody = $('#myTbody');
+            const distSelect = $('#dist');
+            
+            console.log('data', data);
+
+            // 2. 建立不重複的行政區選項
+            function createDistrictOptions() {
+                // 取得所有不重複的行政區
+                const districts = [...new Set(data.map(item => item.dist))];
+                console.log('行政區:', districts);
+                
+                // 清空原有選項（保留"請選擇"）
+                distSelect.find('option:not(:first)').remove();
+                
+                // 加入行政區選項
+                districts.forEach(function(district) {
+                    distSelect.append(`<option value="${district}">${district}</option>`);
+                });
+            }
+
+            // 3. 顯示表格資料的函數
+            function displayData(dataToShow) {
+                let content = '';
+                $.each(dataToShow, function (key, value) {
+                    content += `
+                        <tr>
+                            <td>${key + 1}</td>
+                            <td>${value.name}</td>
+                            <td>${value.dist}</td>
+                            <td>${value.addr}</td>
+                            <td>${value.tel}</td>
+                        </tr>
+                    `;
+                });
+                
+                // 清空表格並加入新內容
+                myTbody.empty().append(content);
+            }
+
+            // 4. 下拉選單變更事件
+            distSelect.change(function() {
+                const selectedDistrict = $(this).val();
+                console.log('選擇的行政區:', selectedDistrict);
+                
+                if (selectedDistrict === '') {
+                    // 如果選擇"請選擇"，顯示所有資料
+                    displayData(data);
+                } else {
+                    // 篩選出符合選擇行政區的資料
+                    const filteredData = data.filter(function(item) {
+                        return item.dist === selectedDistrict;
+                    });
+                    console.log('篩選後的資料:', filteredData);
+                    displayData(filteredData);
+                }
+            });
+
+            // 5. 初始化
+            createDistrictOptions(); // 建立下拉選單選項
+            displayData(data);       // 顯示所有資料
+        });
+
+    </script>
+</body>
+
+</html>

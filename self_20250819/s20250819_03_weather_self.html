@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>氣象預報 36 小時資料</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+  <div class="container mt-3">
+    <h2>氣象預報 36 小時資料</h2>
+    <p class="text-muted">資料來源：本地 <code>weather.json</code></p>
+
+    <table class="table table-bordered align-middle">
+      <thead>
+        <tr class="table-light">
+          <th style="width:60px;">id</th>
+          <th style="width:160px;">name</th>
+          <th><span id="startTime12Span">00:00-06:00</span></th>
+          <th><span id="startTime24Span">12-24</span></th>
+          <th><span id="startTime36Span">0-6</span></th>
+        </tr>
+      </thead>
+      <tbody id="myTbody"></tbody>
+    </table>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"
+          integrity="sha512-Tc0i+vRogmX4NN7tuLbQfBxa8JkfUSAxSFVzmU31nVdHyiHElPPy2cWfFacmCJKw0VqovrzKhdd2TSTMdAxp2g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+          integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    $(function () {
+      const myTbody = $('#myTbody');
+
+      // 標題先固定三段；如需顯示實際時間，未來可在 JSON 補時間字串
+      $('#startTime12Span').text('0-12');
+      $('#startTime24Span').text('12-24');
+      $('#startTime36Span').text('24-36');
+
+      // 串接本地 JSON
+      $.getJSON('./data/weather_slim.json', function (cities) {
+        let rows = '';
+
+        $.each(cities, function (_, city) {
+          // 取三個時段
+          const d12 = city.data?.[0] || {};
+          const d24 = city.data?.[1] || {};
+          const d36 = city.data?.[2] || {};
+
+          // 產出每格內容（含圖示、PoP、CI）
+          const cellHtml = (d) => {
+            if (d.MinT === undefined) return '-';
+            const temp = `${d.MinT}-${d.MaxT} °C`;
+            const text = `${d.Wx}`;
+            const pop  = (d.PoP !== undefined) ? `、PoP ${d.PoP}%` : '';
+            const ci   = d.CI ? `（${d.CI}）` : '';
+            const icon = (d.wxCode && d.dayType) ? `<img src="./data/${d.dayType}/${d.wxCode}.svg" alt="" style="width:28px; height:28px; margin-left:6px; vertical-align:middle;">` : '';
+            return `${temp}　${text}${icon}<div class="text-muted small mt-1">${pop ? pop.substring(1) : ''}${ci ? '　' + d.CI : ''}</div>`;
+          };
+
+          rows += `
+            <tr>
+              <td>${city.id ?? ''}</td>
+              <td>${city.name ?? ''}</td>
+              <td>${cellHtml(d12)}</td>
+              <td>${cellHtml(d24)}</td>
+              <td>${cellHtml(d36)}</td>
+            </tr>
+          `;
+        });
+
+        myTbody.html(rows);
+      }).fail(function (err) {
+        console.error('讀取 weather.json 失敗', err);
+        myTbody.html(`<tr><td colspan="5" class="text-danger">讀取 weather.json 失敗</td></tr>`);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 載入bs5 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .filter-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .filter-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-check-label {
+            color: #555;
+        }
+        
+        .control-buttons {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn {
+            padding: 0.4rem 1.2rem;
+            font-size: 0.9rem;
+        }
+        
+        .result-count {
+            margin: 1rem 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .table {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .table thead th {
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .table td {
+            vertical-align: middle;
+            padding: 0.75rem;
+        }
+        
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container mt-3">
+        <h2>臺北市精神科診所清單</h2>
+        <p>資料來源：台北市政府公開資料 <code>psy_clinics_20240819.csv</code></p>
+        <!-- 篩選區域 -->
+        <div class="filter-section">
+            <div class="filter-title">選擇行政區篩選：</div>
+            <div class="checkbox-container" id="checkboxContainer" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="中正區" id="check_ZH">
+                    <label class="form-check-label" for="check_ZH">中正區</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="大同區" id="check_DT">
+                    <label class="form-check-label" for="check_DT">大同區</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="中山區" id="check_ZS">
+                    <label class="form-check-label" for="check_ZS">中山區</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="松山區" id="check_SS">
+                    <label class="form-check-label" for="check_SS">松山區</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="大安區" id="check_DA">
+                    <label class="form-check-label" for="check_DA">大安區</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="萬華區" id="check_WH">
+                    <label class="form-check-label" for="check_WH">萬華區</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="信義區" id="check_XY">
+                    <label class="form-check-label" for="check_XY">信義區</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="士林區" id="check_SL">
+                    <label class="form-check-label" for="check_SL">士林區</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="北投區" id="check_BT">
+                    <label class="form-check-label" for="check_BT">北投區</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="內湖區" id="check_NH">
+                    <label class="form-check-label" for="check_NH">內湖區</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="南港區" id="check_NG">
+                    <label class="form-check-label" for="check_NG">南港區</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input district-checkbox" type="checkbox" value="文山區" id="check_WS">
+                    <label class="form-check-label" for="check_WS">文山區</label>
+                </div>
+            </div>
+            <div class="control-buttons">
+                <button class="btn btn-primary" id="selectAll">全選</button>
+                <button class="btn btn-secondary" id="clearAll">清除</button>
+            </div>
+        </div>
+
+        <!-- 結果數量顯示 -->
+        <div class="result-count" id="resultCount"></div>
+
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>序號</th>
+                    <th>診所名稱</th>
+                    <th>行政區</th>
+                    <th>地址</th>
+                    <th>電話</th>
+                </tr>
+            </thead>
+            <tbody id="myTbody">
+                <!-- <tr>
+                    <td>1</td>
+                    <td>台北市</td>
+                    <td>24-34</td>
+                    <td>25-35</td>
+                    <td>26-36</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!-- 載入bs5 js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"
+        integrity="sha512-Tc0i+vRogmX4NN7tuLbQfBxa8JkfUSAxSFVzmU31nVdHyiHElPPy2cWfFacmCJKw0VqovrzKhdd2TSTMdAxp2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- 載入jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- get data -->
+
+    <!-- load js -->
+    <!--ajax json -->
+    <script src="./data/opendata.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // 1. 取得資料和元素
+            const data = openData;
+            const myTbody = $('#myTbody');
+            const resultCount = $('#resultCount');
+
+            console.log('data', data);
+
+            // 2. 顯示表格資料的函數
+            function displayData(dataToShow) {
+                let content = '';
+                $.each(dataToShow, function (key, value) {
+                    content += `
+                        <tr>
+                            <td>${key + 1}</td>
+                            <td>${value.name}</td>
+                            <td>${value.dist}</td>
+                            <td>${value.addr}</td>
+                            <td>${value.tel}</td>
+                        </tr>
+                    `;
+                });
+
+                // 清空表格並加入新內容
+                myTbody.empty().append(content);
+
+                // 更新結果數量
+                resultCount.text(`共找到 ${dataToShow.length} 筆診所資料`);
+            }
+
+            // 3. 篩選資料的函數
+            function filterData() {
+                // 取得所有被選中的 checkbox
+                const selectedDistricts = [];
+                $('.district-checkbox:checked').each(function () {
+                    selectedDistricts.push($(this).val());
+                });
+
+                console.log('選擇的行政區:', selectedDistricts);
+
+                if (selectedDistricts.length === 0) {
+                    // 如果沒有選擇任何行政區，顯示所有資料
+                    displayData(data);
+                } else {
+                    // 篩選出符合選擇行政區的資料
+                    const filteredData = data.filter(function (item) {
+                        return selectedDistricts.includes(item.dist);
+                    });
+                    console.log('篩選後的資料:', filteredData);
+                    displayData(filteredData);
+                }
+            }
+
+            // 4. checkbox 變更事件
+            $(document).on('change', '.district-checkbox', function () {
+                filterData();
+            });
+
+            // 5. 全選按鈕
+            $('#selectAll').click(function () {
+                $('.district-checkbox').prop('checked', true);
+                filterData();
+            });
+
+            // 6. 清除按鈕
+            $('#clearAll').click(function () {
+                $('.district-checkbox').prop('checked', false);
+                filterData();
+            });
+
+            // 7. 初始化
+            displayData(data); // 顯示所有資料
+        });
+
+    </script>
+</body>
+
+</html>

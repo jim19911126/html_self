@@ -1,0 +1,794 @@
+[
+  {
+    "id": 1,
+    "name": "嘉義縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 34,
+        "MinT": 26,
+        "PoP": 50,
+        "CI": "舒適至易中暑"
+      },
+      {
+        "time": 24,
+        "Wx": "多雲短暫陣雨",
+        "wxCode": "8",
+        "dayType": "night",
+        "MaxT": 30,
+        "MinT": 26,
+        "PoP": 50,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 32,
+        "MinT": 26,
+        "PoP": 10,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "新北市",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 34,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 24,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "night",
+        "MaxT": 31,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 34,
+        "MinT": 27,
+        "PoP": 10,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "嘉義市",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 35,
+        "MinT": 25,
+        "PoP": 60,
+        "CI": "舒適至易中暑"
+      },
+      {
+        "time": 24,
+        "Wx": "多雲短暫陣雨",
+        "wxCode": "8",
+        "dayType": "night",
+        "MaxT": 30,
+        "MinT": 25,
+        "PoP": 50,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 33,
+        "MinT": 25,
+        "PoP": 20,
+        "CI": "舒適至易中暑"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "新竹縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 34,
+        "MinT": 26,
+        "PoP": 40,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 24,
+        "Wx": "多雲",
+        "wxCode": "4",
+        "dayType": "night",
+        "MaxT": 31,
+        "MinT": 26,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 34,
+        "MinT": 26,
+        "PoP": 10,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "新竹市",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 33,
+        "MinT": 27,
+        "PoP": 40,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 24,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "night",
+        "MaxT": 30,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 32,
+        "MinT": 27,
+        "PoP": 10,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "台北市",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 35,
+        "MinT": 26,
+        "PoP": 20,
+        "CI": "舒適至易中暑"
+      },
+      {
+        "time": 24,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "night",
+        "MaxT": 31,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 35,
+        "MinT": 27,
+        "PoP": 10,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "台南市",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 33,
+        "MinT": 27,
+        "PoP": 30,
+        "CI": "舒適至易中暑"
+      },
+      {
+        "time": 24,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "night",
+        "MaxT": 30,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 32,
+        "MinT": 27,
+        "PoP": 10,
+        "CI": "悶熱"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "宜蘭縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "多雲時晴",
+        "wxCode": "3",
+        "dayType": "day",
+        "MaxT": 33,
+        "MinT": 25,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 24,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "night",
+        "MaxT": 30,
+        "MinT": 26,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "多雲",
+        "wxCode": "4",
+        "dayType": "day",
+        "MaxT": 32,
+        "MinT": 26,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "苗栗縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 32,
+        "MinT": 26,
+        "PoP": 40,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 24,
+        "Wx": "陰時多雲短暫陣雨",
+        "wxCode": "10",
+        "dayType": "night",
+        "MaxT": 29,
+        "MinT": 25,
+        "PoP": 40,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 32,
+        "MinT": 25,
+        "PoP": 10,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "雲林縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 34,
+        "MinT": 25,
+        "PoP": 70,
+        "CI": "舒適至易中暑"
+      },
+      {
+        "time": 24,
+        "Wx": "多雲短暫陣雨",
+        "wxCode": "8",
+        "dayType": "night",
+        "MaxT": 29,
+        "MinT": 25,
+        "PoP": 70,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 33,
+        "MinT": 25,
+        "PoP": 30,
+        "CI": "舒適至易中暑"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "花蓮縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 31,
+        "MinT": 24,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 24,
+        "Wx": "多雲短暫陣雨",
+        "wxCode": "8",
+        "dayType": "night",
+        "MaxT": 29,
+        "MinT": 26,
+        "PoP": 40,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 31,
+        "MinT": 26,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "台中市",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 34,
+        "MinT": 26,
+        "PoP": 50,
+        "CI": "舒適至易中暑"
+      },
+      {
+        "time": 24,
+        "Wx": "多雲短暫陣雨",
+        "wxCode": "8",
+        "dayType": "night",
+        "MaxT": 31,
+        "MinT": 26,
+        "PoP": 40,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 33,
+        "MinT": 26,
+        "PoP": 30,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "台東縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "陰短暫陣雨",
+        "wxCode": "11",
+        "dayType": "day",
+        "MaxT": 30,
+        "MinT": 24,
+        "PoP": 60,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 24,
+        "Wx": "多雲短暫陣雨",
+        "wxCode": "8",
+        "dayType": "night",
+        "MaxT": 28,
+        "MinT": 25,
+        "PoP": 40,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "多雲短暫陣雨",
+        "wxCode": "8",
+        "dayType": "day",
+        "MaxT": 30,
+        "MinT": 25,
+        "PoP": 30,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "桃園市",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 35,
+        "MinT": 26,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 24,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "night",
+        "MaxT": 31,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 35,
+        "MinT": 27,
+        "PoP": 10,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "南投縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 35,
+        "MinT": 25,
+        "PoP": 70,
+        "CI": "舒適至易中暑"
+      },
+      {
+        "time": 24,
+        "Wx": "多雲短暫陣雨",
+        "wxCode": "8",
+        "dayType": "night",
+        "MaxT": 30,
+        "MinT": 25,
+        "PoP": 60,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 33,
+        "MinT": 25,
+        "PoP": 30,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "高雄市",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "多雲時晴",
+        "wxCode": "3",
+        "dayType": "day",
+        "MaxT": 35,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "舒適至易中暑"
+      },
+      {
+        "time": 24,
+        "Wx": "多雲時晴",
+        "wxCode": "3",
+        "dayType": "night",
+        "MaxT": 32,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 32,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "金門縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "多雲短暫陣雨或雷雨",
+        "wxCode": "15",
+        "dayType": "day",
+        "MaxT": 29,
+        "MinT": 26,
+        "PoP": 80,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 24,
+        "Wx": "多雲時晴",
+        "wxCode": "3",
+        "dayType": "night",
+        "MaxT": 27,
+        "MinT": 26,
+        "PoP": 10,
+        "CI": "舒適"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 33,
+        "MinT": 26,
+        "PoP": 0,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "屏東縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "多雲時晴",
+        "wxCode": "3",
+        "dayType": "day",
+        "MaxT": 35,
+        "MinT": 26,
+        "PoP": 20,
+        "CI": "舒適至易中暑"
+      },
+      {
+        "time": 24,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "night",
+        "MaxT": 31,
+        "MinT": 26,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴午後短暫雷陣雨",
+        "wxCode": "21",
+        "dayType": "day",
+        "MaxT": 33,
+        "MinT": 26,
+        "PoP": 40,
+        "CI": "舒適至易中暑"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "基隆市",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 33,
+        "MinT": 26,
+        "PoP": 20,
+        "CI": "舒適至易中暑"
+      },
+      {
+        "time": 24,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "night",
+        "MaxT": 30,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "多雲時晴",
+        "wxCode": "3",
+        "dayType": "day",
+        "MaxT": 32,
+        "MinT": 27,
+        "PoP": 10,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "澎湖縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "多雲短暫陣雨或雷雨",
+        "wxCode": "15",
+        "dayType": "day",
+        "MaxT": 32,
+        "MinT": 25,
+        "PoP": 30,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 24,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "night",
+        "MaxT": 29,
+        "MinT": 26,
+        "PoP": 10,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 31,
+        "MinT": 27,
+        "PoP": 0,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "彰化縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 33,
+        "MinT": 26,
+        "PoP": 20,
+        "CI": "舒適至易中暑"
+      },
+      {
+        "time": 24,
+        "Wx": "多雲短暫陣雨",
+        "wxCode": "8",
+        "dayType": "night",
+        "MaxT": 30,
+        "MinT": 26,
+        "PoP": 40,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "多雲時晴",
+        "wxCode": "3",
+        "dayType": "day",
+        "MaxT": 32,
+        "MinT": 26,
+        "PoP": 10,
+        "CI": "舒適至悶熱"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "連江縣",
+    "data": [
+      {
+        "time": 12,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 31,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "舒適至悶熱"
+      },
+      {
+        "time": 24,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "night",
+        "MaxT": 29,
+        "MinT": 27,
+        "PoP": 10,
+        "CI": "悶熱"
+      },
+      {
+        "time": 36,
+        "Wx": "晴時多雲",
+        "wxCode": "2",
+        "dayType": "day",
+        "MaxT": 30,
+        "MinT": 27,
+        "PoP": 20,
+        "CI": "悶熱"
+      }
+    ]
+  }
+]
