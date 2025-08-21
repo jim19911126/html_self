@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 載入bs5 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container mt-3">
+        <h2>Select Menu</h2>
+        <p>To style a select menu in Bootstrap 5, add the .form-select class to the select element:</p>
+
+        <label for="sel1" class="form-label">Select list (select one):</label>
+        <select id="mySelect" class="form-select" id="sel1" name="sellist1">
+            <option value="0">0 - 全部地區</option>
+        </select>
+        <br>
+        <label for="sel1" class="form-label">Select list (select one):</label>
+        <select id="mySelectDetail" class="form-select" id="sel1" name="sellist1">
+            <!-- <option>11</option> -->
+
+        </select>
+        <br>
+
+    </div>
+
+
+
+    <!-- 載入bs5 js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"
+        integrity="sha512-Tc0i+vRogmX4NN7tuLbQfBxa8JkfUSAxSFVzmU31nVdHyiHElPPy2cWfFacmCJKw0VqovrzKhdd2TSTMdAxp2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- 載入jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+
+            // data
+            let data = [
+                {
+                    id: 1,
+                    name: '北部地區',
+                    content: ['11', '12', '13', '14']
+                },
+                {
+                    id: 2,
+                    name: '中部地區',
+                    content: ['21', '22', '23', '24']
+                },
+                {
+                    id: 3,
+                    name: '南部地區',
+                    content: ['31', '32', '33', '34']
+                },
+                {
+                    id: 4,
+                    name: '東部地區',
+                    content: ['41', '42', '43', '44']
+                },
+                {
+                    id: 5,
+                    name: '外島地區',
+                    content: ['51', '52', '53', '54']
+                }
+            ];
+
+            // 全部content
+            let total = [];
+            $.each(data, function (key, value) {
+                let tmpContent = value.content;
+                console.log('tmpContent', tmpContent);
+                // concat 兩個array 變一個array
+                total = total.concat(tmpContent);
+            });
+            console.log('total', total);
+
+
+            // 1.bind
+            const mySelect = $('#mySelect');
+            const mySelectDetail = $('#mySelectDetail');
+
+            // 2.action
+
+            // 2.1 init selectDetail
+            // total = [11,12,13,14,21,22,23,24];
+
+            // init mySelectDetail
+            // append total to mySelectDetail
+            let mySelectDetailContent = ``;
+            $.each(total, function (key, value) {
+                mySelectDetailContent += `
+                <option value='${value}'>${value}</option>
+                `;
+            });
+            mySelectDetail.append(mySelectDetailContent);
+            // 2.1 init selectDetail end
+
+            // 2.2 init mySelect
+            let content = ``;
+            $.each(data, function (key, value) {
+                // console.log('key', key);
+                // console.log('value', value);
+                let tmpDetails = value.content;
+                console.log('tmpDetails', tmpDetails);
+                content += `
+                <option value='${value.id}'>${value.id} - ${value.name}</option>
+                `;
+            });
+            mySelect.append(content);
+            // 2.2 init mySelect end
+
+
+            // 2.3 mySelect change
+            mySelect.change(function (e) {
+                e.preventDefault();
+
+                // append 一開始要清空
+                mySelectDetail.html('');
+
+                // get mySelect value
+                let selectValue = $(this).val();
+
+                // 全部地區
+                if (selectValue == 0) {
+                    console.log('mySelectDetailContent', mySelectDetailContent);
+
+                    mySelectDetail.append(mySelectDetailContent);
+                    return false;
+                }
+                // id = key + 1
+                let tmpKey = selectValue - 1;;
+                console.log('selectValue', selectValue);
+                console.log('tmpKey', tmpKey);
+                let tmpDataContent = data[tmpKey].content;
+                console.log('tmpDataContent', tmpDataContent);
+
+                // append tmpDataContent to mySelectDetail
+                let content = ``;
+                $.each(tmpDataContent, function (key, value) {
+                    content += `
+                    <option value='${value}'>${value}</option>
+                    `;
+                });
+                mySelectDetail.append(content);
+            });
+            // 2.3 mySelect change end
+
+
+        });
+    </script>
+</body>
+
+</html>
