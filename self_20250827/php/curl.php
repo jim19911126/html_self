@@ -19,7 +19,7 @@ $ch = curl_init();
 // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 //執行，並將結果存回
 
-$url = 'https://data.taipei/api/v1/dataset/5048d475-7642-43ee-ac6f-af0a368d63bf?scope=resourceAquire';
+$url = 'https://data.taipei/api/v1/dataset/4b8ac39f-af9d-45ef-b74b-aa3342bb1798?scope=resourceAquire';
 curl_setopt_array($ch, [
     CURLOPT_URL            => $url,
     CURLOPT_RETURNTRANSFER => true
