@@ -56,17 +56,44 @@
                     // data: {},
                     dataType: "json",
                     success: function (response) {
+                        if (!response.length) {
+                            result.push(response)
+                            
+                        }
                         
                     }
                 });
             }
 
             let result = [];
+            const myTbody = $("#myTbody");
 
             for (let index = 52; index < 73; index++) {
                 let tmpIP = `192.168.211.${index}`;
                 getDataFun(tmpIP);
             }
+
+            setTimeout(() => {
+                result.sort((a, b) => a.id - b.id);
+                console.log('result', result);
+
+
+                let content = ``;
+
+                $.each(result, function (key, value) {
+                    content += `
+                    <tr>
+                        <td>${value.id}</td>
+                        <td>${value.name}</td>
+                        <td>${value.msg}</td>
+                    </tr>
+                `;
+                });
+
+                myTbody.html(content);
+
+
+            }, 3000);
         });
 
     </script>
